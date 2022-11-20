@@ -53,7 +53,7 @@ const Login = () => {
           Don't have an account? <Link to="/register">Register</Link>
         </span>
         <span>
-          Forgot Password? <Link to="/forgotpassword">ForgotPassword</Link>
+          Forgot Password? <Link to="/Forgotpass">ForgotPassword</Link>
         </span>
       </form>
     </div>
