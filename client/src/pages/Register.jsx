@@ -36,9 +36,9 @@ const Register = () => {
   };
 
   return (
-    <div className="auth">
-      <h1>Register</h1>
+    <div className="authentication">
       <form>
+        <h1 className= "heading">Register Form</h1>
         <input
           required
           type="text"

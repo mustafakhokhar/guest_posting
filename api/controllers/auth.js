@@ -113,8 +113,8 @@ export const ForgotPassword = (req, res) => {
       res.status(400).json(`Your password is: ${data[0].password}`)
     }
 
-    // const token = jwt.sign({ username: data[0].username}, "jwtkey");
-    // const { password, ...other } = data[0];
+    const token = jwt.sign({ username: data[0].username}, "jwtkey");
+    const { password, ...other } = data[0];
 
     res
       .cookie("access_token", token, {

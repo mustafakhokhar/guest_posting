@@ -30,7 +30,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="auth">
+    <div className="authentication">
       <h1>Login</h1>
       <form>
         <input

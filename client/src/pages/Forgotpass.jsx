@@ -34,7 +34,7 @@ const ForgotPassword = () => {
     }
   };
   return (
-    <div className="auth">
+    <div className="authentication">
       <h1>ForgotPassword</h1>
       <form>
         <input
