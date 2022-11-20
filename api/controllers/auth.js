@@ -31,7 +31,7 @@ export const register = (req, res) => {
     }else if (req.body.reader_type) {
       status = "writer"
     }
-    const q = "INSERT INTO user_info(`username`,`full_name`, `password`,`security_1`, `security_2`, `security_3`,`status` , `total_reports` ,`is_account_ban`) VALUES (?)";
+    const q = "INSERT INTO guest_hosting_site.user_info(`username`,`full_name`, `password`,`security_1`, `security_2`, `security_3`,`status` , `total_reports` ,`is_account_ban`) VALUES (?)";
     const values = [req.body.username, req.body.name, req.body.password , req.body.question_1 , req.body.question_2 , req.body.question_3 ,status, 0 , false ];
 
     db.query(q, [values], (err, data) => {
@@ -46,22 +46,23 @@ export const register = (req, res) => {
 export const login = (req, res) => {
   //CHECK USER
 
-  const q = "SELECT * FROM users WHERE username = ?";
+  const q = "SELECT * FROM user_info WHERE username = ?";
 
   db.query(q, [req.body.username], (err, data) => {
     if (err) return res.status(500).json(err);
     if (data.length === 0) return res.status(404).json("User not found!");
 
-    //Check password
-    const isPasswordCorrect = bcrypt.compareSync(
-      req.body.password,
-      data[0].password
-    );
+    var isPasswordCorrect = false
+    console.log(req.body.password)
+    console.log(data[0].password)
+    if (req.body.password == data[0].password){
+      isPasswordCorrect = true
+    }
 
     if (!isPasswordCorrect)
       return res.status(400).json("Wrong username or password!");
 
-    const token = jwt.sign({ id: data[0].id }, "jwtkey");
+    const token = jwt.sign({ username: data[0].username}, "jwtkey");
     const { password, ...other } = data[0];
 
     res

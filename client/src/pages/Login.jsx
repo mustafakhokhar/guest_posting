@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -50,7 +50,10 @@ const Login = () => {
         <button onClick={handleSubmit}>Login</button>
         {err && <p>{err}</p>}
         <span>
-          Don't you have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register">Register</Link>
+        </span>
+        <span>
+          Forgot Password? <Link to="/forgotpassword">ForgotPassword</Link>
         </span>
       </form>
     </div>
