@@ -74,6 +74,57 @@ export const login = (req, res) => {
   });
 };
 
+export const ForgotPassword = (req, res) => {
+  //CHECK USER
+  console.log("here")
+  const q = "SELECT * FROM user_info WHERE username = ?";
+  console.log(req.body)
+  
+  db.query(q, [req.body.username], (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0) return res.status(404).json("User not found!");
+
+    var isq1Correct = false
+    console.log(req.body.question_1)
+    console.log("yo")
+    console.log(data[0].question_1)
+    if (req.body.question_1 == data[0].security_1){
+      isq1Correct = true
+    }
+    var isq2Correct = false
+    console.log(req.body.question_2)
+    console.log("yo")
+    console.log(data[0].question_2)
+    if (req.body.question_2 == data[0].security_2){
+      isq2Correct = true
+    }
+    var isq3Correct = false
+    console.log(req.body.question_3)
+    console.log("yo")
+    console.log(data[0].question_3)
+    if (req.body.question_3 == data[0].security_3){
+      isq3Correct = true
+    }
+
+
+    if (!isq1Correct && !isq2Correct && !isq3Correct)
+      return res.status(400).json("Wrong answer!");
+    else{
+      res.status(400).json(`Your password is: ${data[0].password}`)
+    }
+
+    const token = jwt.sign({ username: data[0].username}, "jwtkey");
+    const { password, ...other } = data[0];
+
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json(other);
+  });
+};
+
 export const logout = (req, res) => {
   res.clearCookie("access_token",{
     sameSite:"none",
