@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const navigateTologin = () => {
-    // 👇️ navigate to /contacts
+    // 👇️ navigate to /Login
     navigate('/login');
   };
   const { currentUser, logout } = useContext(AuthContext);
