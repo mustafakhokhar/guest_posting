@@ -11,8 +11,7 @@ const Register = () => {
     question_1:"",
     question_2:"",
     question_3:"",
-    writer_type : "",
-    reader_type : ""
+    state: "",
   });
 
   console.log(inputs)
@@ -95,9 +94,9 @@ const Register = () => {
         />
         <label name= "user_type">User type </label>
         <label name= "user_type">Reader </label>
-        <input name='reader_type' type='radio' onChange={handleChange}/>
+        <input name='state' type='radio' value='reader' onChange={handleChange}/>
         <label name= "user_type">Writer</label>
-        <input name='writer_type' type='radio' onChange={handleChange}/>
+        <input name='state' type='radio' value='writer' onChange={handleChange}/>
 
 
 
