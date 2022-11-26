@@ -105,17 +105,8 @@ export const ForgotPassword = (req, res) => {
       return res.status(400).json("Wrong answer!");
     else{
       res.status(400).json(`Your password is: ${data[0].password}`)
+      return;
     }
-
-    const token = jwt.sign({ username: data[0].username}, "jwtkey");
-    const { password, ...other } = data[0];
-
-    res
-      .cookie("access_token", token, {
-        httpOnly: true,
-      })
-      .status(200)
-      .json(other);
   });
 };
 
