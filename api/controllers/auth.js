@@ -28,7 +28,7 @@ export const register = (req, res) => {
 
     if (req.body.reader_type){
       status = "reader"
-    }else if (req.body.reader_type) {
+    }else if (req.body.writer_type) {
       status = "writer"
     }
     const q = "INSERT INTO guest_hosting_site.user_info(`username`,`full_name`, `password`,`security_1`, `security_2`, `security_3`,`status` , `total_reports` ,`is_account_ban`) VALUES (?)";
