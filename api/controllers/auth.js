@@ -24,15 +24,9 @@ export const register = (req, res) => {
     //Hash the password and create a user
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
-    var status ;
 
-    if (req.body.reader_type){
-      status = "reader"
-    }else if (req.body.reader_type) {
-      status = "writer"
-    }
     const q = "INSERT INTO guest_hosting_site.user_info(`username`,`full_name`, `password`,`security_1`, `security_2`, `security_3`,`status` , `total_reports` ,`is_account_ban`) VALUES (?)";
-    const values = [req.body.username, req.body.name, req.body.password , req.body.question_1 , req.body.question_2 , req.body.question_3 ,status, 0 , false ];
+    const values = [req.body.username, req.body.name, req.body.password , req.body.question_1 , req.body.question_2 , req.body.question_3 ,req.body.state, 0 , false ];
 
     db.query(q, [values], (err, data) => {
       console.log(err)
@@ -111,17 +105,8 @@ export const ForgotPassword = (req, res) => {
       return res.status(400).json("Wrong answer!");
     else{
       res.status(400).json(`Your password is: ${data[0].password}`)
+      return;
     }
-
-    const token = jwt.sign({ username: data[0].username}, "jwtkey");
-    const { password, ...other } = data[0];
-
-    res
-      .cookie("access_token", token, {
-        httpOnly: true,
-      })
-      .status(200)
-      .json(other);
   });
 };
 
