@@ -1,5 +1,6 @@
 import express from "express";
 import authRoutes from "./routes/auth.js";
+import postRoutes from "./routes/posts.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
 
@@ -24,6 +25,7 @@ app.post("/api/upload", upload.single("file"), function (req, res) {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
 
 
 app.listen(8800, () => {

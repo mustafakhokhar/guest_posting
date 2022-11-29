@@ -23,7 +23,7 @@ const Navbar = () => {
             </Link>
           )}
           <span className="write-button">
-            <Link className="link">
+            <Link className="link" to="/Write">
               Write
             </Link>
           </span>

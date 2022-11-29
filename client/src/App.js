@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/Forgotpass";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Write from "./pages/Write";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./style.scss"
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/ForgotPass",
     element: <ForgotPassword />,
+  },
+  {
+    path: "/Write",
+    element: <Write />,
   },
 ]);
 
