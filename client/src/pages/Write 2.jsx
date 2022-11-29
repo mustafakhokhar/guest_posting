@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Write = () => {
   const state = useLocation().state;
   console.log("state is:",state)
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(state?.post_content || "");
   // const [title, setTitle] = useState(state?.post_content || "");
   // const [file, setFile] = useState(null);
   // const [cat, setCat] = useState(state?.cat || "");
@@ -49,22 +49,21 @@ const Write = () => {
       //       reportCount:0,
       //       totalComments:0,
       //     })
-
-      await axios.post(`/posts/`, {
-          // title,
-          post_id: 0,
-          post_content: value,
-          admin_approval_status:0,
-          tag1: "",
-          tag2:"",
-          tag3: "",
-          totalLikes:0,
-          totalDislikes:0,
-          reportCount:0,
-          totalComments:0,
-          // cat,
-          // img: file ? imgUrl : "",
-          // date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+        await axios.post(`/posts/`, {
+            // title,
+            post_id: 0,
+            post_content: value,
+            admin_approval_status:0,
+            tag1: "",
+            tag2:"",
+            tag3: "",
+            totalLikes:0,
+            totalDislikes:0,
+            reportCount:0,
+            totalComments:0,
+            // cat,
+            // img: file ? imgUrl : "",
+            // date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
           });
           console.log("Value sended")
           navigate("/")
