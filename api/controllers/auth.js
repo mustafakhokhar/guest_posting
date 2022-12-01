@@ -39,33 +39,22 @@ export const register = (req, res) => {
 export const admin = (req, res) => {
   //CHECK USER
 
-  // const q = "SELECT * FROM user_info WHERE username = ?";
-  console.log("Hello Gandu", req)
-  // db.query(q, [req.body.username], (err, data) => {
-  //   if (err) return res.status(500).json(err);
-  //   if (data.length === 0) return res.status(404).json("User not found!");
+export const admin = (req, res) => {
+  //CHECK EXISTING USER
 
-  //   var isPasswordCorrect = false
-  //   console.log(req.body.password)
-  //   console.log(data[0].password)
-  //   if (req.body.password == data[0].password){
-  //     isPasswordCorrect = true
-  //   }
+  const q = "SELECT * FROM posts where admin_approval_status = 0"
 
-  //   if (!isPasswordCorrect)
-  //     return res.status(400).json("Wrong username or password!");
-
-  //   const token = jwt.sign({ username: data[0].username}, "jwtkey");
-  //   const { password, ...other } = data[0];
-
-  //   res
-  //     .cookie("access_token", token, {
-  //       httpOnly: true,
-  //     })
-  //     .status(200)
-  //     .json(other);
-  // });
+  console.log(req.body)
+  db.query(q, (err, data) => {
+    console.log(err)
+    if (err) return res.status(500).json(err);
+    console.log(data)
+    return data
+    
+  });
 };
+
+
 export const login = (req, res) => {
   //CHECK USER
 
