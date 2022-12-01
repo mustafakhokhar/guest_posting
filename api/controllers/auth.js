@@ -36,8 +36,7 @@ export const register = (req, res) => {
     });
   });
 };
-export const admin = (req, res) => {
-  //CHECK USER
+
 
 export const admin = (req, res) => {
   //CHECK EXISTING USER
