@@ -7,6 +7,7 @@ import {
 import ForgotPassword from "./pages/Forgotpass";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Admin from "./pages/admin";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/ForgotPass",
     element: <ForgotPassword />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
 ]);
 
