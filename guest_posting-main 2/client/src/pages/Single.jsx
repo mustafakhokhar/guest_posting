@@ -8,28 +8,91 @@ import moment from "moment";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import DOMPurify from "dompurify";
+import Comments from "./comments";
+
+
 
 const Single = () => {
   const [post, setPost] = useState({});
+  const [post_likes , setPostLikes] = useState(0)
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const postId = location.pathname.split("/")[2];
-
+  // console.log(location.pathname.split("/"))
   const { currentUser } = useContext(AuthContext);
+  const [report_status , set_report_status] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // console.log("YESS I M CALLEDDDDDDD")
         const res = await axios.get(`/posts/${postId}`);
+        // console.log(res.data)
+        // console.log("POST ID : ", postId)
+        // console.log("in fetch data")
+        setPostLikes(res.data.totalLikes)
         setPost(res.data);
+        // console.log("YOUR TOTAL LIKES : ",post_likes)
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
-  }, [postId]);
+    // console.log("yess!!!!!!!!!!!!")
+  }, [post]);
+
+
+
+
+// READER FUNCTIONALITY : 
+
+
+
+
+  const Like = async(post) => 
+  {
+    // console.log(post)
+    try {
+      // post.totalLikes = post.totalLikes + 1
+      const post_array = [post , currentUser]
+      const res = await axios.post(`/posts/update_like` , post_array);
+    } catch (err){
+      console.log("err : " , err)
+    }
+    
+  }
+
+  const Dis_Like = async(post) => 
+  {
+    // console.log(post)
+    try {
+      // post.totalDislikes = post.totalDislikes + 1
+      const post_array = [post , currentUser]
+      const res = await axios.post(`/posts/update_dislike` , post_array);
+    } catch (err){
+      console.log("err : " , err)
+    }
+    
+  }
+
+  const report_handler = async(post) => {
+
+    try {
+      // post.totalLikes = post.totalLikes + 1
+      const post_array = [post , currentUser]
+      const res = await axios.post(`/posts/update_report_status` , post_array);
+      set_report_status(res.data.message)
+    } catch (err){
+      
+      console.log(err)
+      // set_report_status(err.response.data)
+
+    }
+  }
+
+
 
   const handleDelete = async ()=>{
     try {
@@ -40,6 +103,7 @@ const Single = () => {
     }
   }
 
+
   const getText = (html) =>{
     const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
@@ -48,14 +112,14 @@ const Single = () => {
   return (
     <div className="single">
       <div className="content">
-        <img src={`../upload/${post?.img}`} alt="" />
+        {/* <img src={`../upload/${post?.img}`} alt="" /> */}
         <div className="user">
           {post.userImg && <img
             src={post.userImg}
             alt=""
           />}
           <div className="info">
-            <span>{post.username}</span>
+            <span>{post.writer_id}</span>
             <p>Posted {moment(post.date).fromNow()}</p>
           </div>
           {currentUser.username === post.username && (
@@ -67,13 +131,20 @@ const Single = () => {
             </div>
           )}
         </div>
-        <h1>{post.title}</h1>
+        <h1>{post.tag3}</h1>
         <p
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(post.desc),
+            __html: DOMPurify.sanitize(post.post_content),
           }}
-        ></p>      </div>
-      <Menu cat={post.cat}/>
+        ></p>
+
+          <button onClick = {() => Like(post)}> like : {post.totalLikes}</button>
+          <button onClick = {() => Dis_Like(post)}>Dislike : {post.totalDislikes}</button>
+          <button onClick = {() => report_handler(post)}> Report : <strong>{report_status}</strong> </button>
+          {Comments(postId)}
+        </div>
+
+      
     </div>
   );
 };

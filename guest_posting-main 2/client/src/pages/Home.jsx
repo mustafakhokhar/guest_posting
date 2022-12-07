@@ -1,4 +1,4 @@
- import React ,  { useContext } from "react";
+import React ,  { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -50,13 +50,11 @@ const Home = () => {
       // set_report_status(err.response.data)
 
     }
-
-
-
   }
 
 
-  
+
+
 
   const cat = useLocation().search
 
@@ -73,15 +71,6 @@ const Home = () => {
         // setError(err.response.data);
         console.log(err)
       }
-      // try {
-      //   const res = await axios.get(`/posts`);
-      //   console.log(res.data)
-      //   console.log("yess")
-      //   setPosts(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      //   console.log("noo")
-      // }
     };
 
     fetchData();
@@ -123,32 +112,73 @@ const Home = () => {
 
 
   return (
-   
+    
     <div className="home">
-       <h1>homeeee</h1>
       <div className="posts">
-        {posts.map((post) => (
-          <div className="post" key={post.id}>
-            <div className="img">
-              {/* <img src={`../upload/${post.img}`} alt="" /> */}
-            </div>
-            <h4>wrote by : {post.writer_id}</h4>
+        {posts.map((post) => ( 
+          <div className="post" key={post.post_id}>
+            {/* <div className="img">
+              <img src={`../upload/${post.img}`} alt="" />
+            </div> */}
             <div className="content">
-              <Link className="link" to={`/post/${post.id}`}>
+              <Link className="link" to={`/post/${post.post_id}`}>
                 <h1>{post.tag3}</h1>
               </Link>
               <p>{getText(post.post_content)}</p>
-              <button>Read More</button>
-              <button onClick = {() => Like(post)}> like : {post.totalLikes}</button>
-              <button onClick = {() => Dis_Like(post)}>Dislike : {post.totalDislikes}</button>
-              <button onClick = {() => report_handler(post)}> Report : <strong>{report_status}</strong> </button>
-              {/* <button onClick = {Like}></button> */}
+               {/* <Link className="link" to={`/post/${post.id}`}>
+                <button>Read more</button>
+              </Link> */}
             </div>
           </div>
         ))}
       </div>
     </div>
   );
+    
 };
 
 export default Home;
+
+
+// /*
+
+// <div className="home">
+//        <h1>homeeee</h1>
+//       <div className="posts">
+//         {posts.map((post) => (
+//           <div className="post" key={post.id}>
+//             <div className="img">
+//               {/* <img src={`../upload/${post.img}`} alt="" /> */}
+//               </div>
+//               <h4>wrote by : {post.writer_id}</h4>
+//               <div className="content">
+//                 <Link className="link" to={`/post/${post.id}`}>
+//                   <h1>{post.tag3}</h1>
+//                 </Link>
+//                 <p>{getText(post.post_content)}</p>
+//                 <button>Read More</button>
+//                 <button onClick = {() => Like(post)}> like : {post.totalLikes}</button>
+//                 <button onClick = {() => Dis_Like(post)}>Dislike : {post.totalDislikes}</button>
+//                 <button onClick = {() => report_handler(post)}> Report : <strong>{report_status}</strong> </button>
+//                 {/* <button onClick = {Like}></button> */}
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// */

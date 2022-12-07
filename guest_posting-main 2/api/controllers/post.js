@@ -3,32 +3,35 @@ import jwt from "jsonwebtoken";
 
 
 
+function unixTimestamp (date = Date.now()) {  
+  return Math.floor(date / 1000)
+}
 
 export const getPosts = (req, res) => {
   // const q = req.query.cat
     // ? "SELECT * FROM posts WHERE cat=?"
     // : "SELECT * FROM posts";
-    const q =  "Select * from posts";
-    console.log("yesssss\n")
+  const q =  "Select * from posts";
+    // console.log("yesssssdsdsds\n")
   db.query(q, (err, data) => {
     if (err) return res.status(500).send(err);
-    console.log(data)
+    // console.log(data)
     return res.status(200).json(data);
   });
 };
 
 export const getPost = (req, res) => {
-  
-  console.log("yesss")
-  const q =  "Select * from posts";
-    // "SELECT p.id, `username`, `title`, `desc`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? ";
+  // console.log("I AM CALLLLLEDDDDDDDD")
+  // console.log(req.params.id)
+  // console.log("yesss")
+  const q =  "SELECT * FROM POSTS WHERE post_id = ? ";
 
    
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err);
 
-    console.log("yess")
-    console.log(data[0])
+    // console.log("yess111111")
+    // console.log(data[0])
     return res.status(200).json(data[0]);
   });
 };
@@ -99,10 +102,10 @@ export const updatePost = (req, res) => {
 
 export const update_like = (req, res) => {
 
-  console.log("here")
+  // console.log("here")
 
-  // console.log("yeee")
-  // console.log(req.body)
+  // // console.log("yeee")
+  // // console.log(req.body)
   const post_details = req.body[0]
   const user_details = req.body[1]
 
@@ -113,7 +116,7 @@ export const update_like = (req, res) => {
 
   const has_table_query = `Select * from user_has_liked where username = "${user_name}" and post_id = ${post_id}`
   
-  // console.log(`new likes : ${new_likes} , post id : ${post_id} , user_name : ${user_name} , totalDislikes = ${new_dislikes} `)
+  // // console.log(`new likes : ${new_likes} , post id : ${post_id} , user_name : ${user_name} , totalDislikes = ${new_dislikes} `)
   const sample_query = `Update posts set totalLikes = ${new_likes} , totalDislikes = ${new_dislikes} where post_id = ${post_id}`
   
   
@@ -128,8 +131,8 @@ export const update_like = (req, res) => {
     if (err) {
 
       // return res.status(500).json(err)
-      console.log("error here")
-      console.log(err)
+      // console.log("error here")
+      // console.log(err)
 
     }
 
@@ -138,8 +141,8 @@ export const update_like = (req, res) => {
       if(data.length >0)
       {
 
-        console.log("yes there is data ! ")
-        console.log(`Data is : ${data} , length is : ${data.length}`)
+        // console.log("yes there is data ! ")
+        // console.log(`Data is : ${data} , length is : ${data.length}`)
         
         // 2 : checking if the person has liked or disliked the post before : 
         
@@ -160,7 +163,7 @@ export const update_like = (req, res) => {
               db.query(sample_query, (err, data) => {
 
               if (err) return res.status(500).json(err);
-              else console.log("inserted suscesufully for the first time ")
+              // else // console.log("inserted suscesufully for the first time ")
               // return res.json("Post has been updated.");
 
             });
@@ -187,13 +190,13 @@ export const update_like = (req, res) => {
             db.query(sample_query, (err, data) => {
 
               if (err) return res.status(500).json(err);
-              else console.log("inserted suscesufully for the first time ")
-              // return res.json("Post has been updated.");
+              else // console.log("inserted suscesufully for the first time ")
+              return res.json("Post has been updated.");
 
             });
           } 
           
-          console.log("donee!")
+          // console.log("donee!")
           // return res.json("Post has been updated.");
         });
         
@@ -207,10 +210,10 @@ export const update_like = (req, res) => {
 };
 
 export const update_dislike = (req, res) => {
-  console.log("here")
+  // console.log("here")
 
-  // console.log("yeee")
-  // console.log(req.body)
+  // // console.log("yeee")
+  // // console.log(req.body)
   const post_details = req.body[0]
   const user_details = req.body[1]
 
@@ -221,7 +224,7 @@ export const update_dislike = (req, res) => {
 
   const has_table_query = `Select * from user_has_liked where username = "${user_name}" and post_id = ${post_id}`
   
-  // console.log(`new likes : ${new_likes} , post id : ${post_id} , user_name : ${user_name} , totalDislikes = ${new_dislikes} `)
+  // // console.log(`new likes : ${new_likes} , post id : ${post_id} , user_name : ${user_name} , totalDislikes = ${new_dislikes} `)
   const sample_query = `Update posts set totalLikes = ${new_likes} , totalDislikes = ${new_dislikes} where post_id = ${post_id}`
   
   
@@ -236,8 +239,8 @@ export const update_dislike = (req, res) => {
     if (err) {
 
       // return res.status(500).json(err)
-      console.log("error here")
-      console.log(err)
+      // console.log("error here")
+      // console.log(err)
 
     }
 
@@ -246,16 +249,16 @@ export const update_dislike = (req, res) => {
       if(data.length >0)
       {
 
-        console.log("yes there is data ! ")
-        console.log(`Data is : ${data} , length is : ${data.length}`)
+        // console.log("yes there is data ! ")
+        // console.log(`Data is : ${data} , length is : ${data.length}`)
         
         // 2 : checking if the person has liked or disliked the post before : 
-        console.log(data[0].isLiekd)
+        // console.log(data[0].isLiekd)
         if (data[0].isLiekd == 1){ // means that person first disliked it first but now wanna like it :
 
           new_likes = new_likes - 1
           new_dislikes = new_dislikes + 1
-          console.log("yepp")
+          // console.log("yepp")
 
           // we will first update the entry in has table :
 
@@ -269,7 +272,7 @@ export const update_dislike = (req, res) => {
               db.query(sample_query, (err, data) => {
 
               if (err) return res.status(500).json(err);
-              else console.log("inserted suscesufully for the first time ")
+              // else // console.log("inserted suscesufully for the first time ")
               // return res.json("Post has been updated.");
 
             });
@@ -297,15 +300,15 @@ export const update_dislike = (req, res) => {
             db.query(sample_query, (err, data) => {
 
               if (err) return res.status(500).json(err);
-              else console.log("inserted suscesufully for the first time ")
-              // return res.json("Post has been updated.");
+              else // console.log("inserted suscesufully for the first time ")
+              return res.json("Post has been updated.");
 
             });
 
 
           } 
           
-          console.log("donee!")
+          // console.log("donee!")
           // return res.json("Post has been updated.");
         });
         
@@ -320,10 +323,10 @@ export const update_dislike = (req, res) => {
 
 export const update_report_status = (req ,res) =>{
  
-  console.log("here")
+  // // console.log("here")
 
-  // console.log("yeee")
-  // console.log(req.body)
+  // // console.log("yeee")
+  // // console.log(req.body)
   const post_details = req.body[0]
   const user_details = req.body[1]
 
@@ -333,7 +336,7 @@ export const update_report_status = (req ,res) =>{
 
   const has_table_query = `Select * from user_has_reported where username = "${user_name}" and post_id = ${post_id}`
   
-  // console.log(`new likes : ${new_likes} , post id : ${post_id} , user_name : ${user_name} , totalDislikes = ${new_dislikes} `)
+  // // console.log(`new likes : ${new_likes} , post id : ${post_id} , user_name : ${user_name} , totalDislikes = ${new_dislikes} `)
   // const sample_query = `Update posts set totalLikes = ${new_likes} , totalDislikes = ${new_dislikes} where post_id = ${post_id}`
   
   const error_msg = " You have already reported this post !"
@@ -345,8 +348,8 @@ export const update_report_status = (req ,res) =>{
     if (err) {
 
       // return res.status(500).json(err)
-      console.log("error here")
-      console.log(err)
+      // // console.log("error here")
+      // console.log(err)
 
     }
 
@@ -355,8 +358,8 @@ export const update_report_status = (req ,res) =>{
       if(data.length >0)
       {
 
-        console.log("yes there is data ! ")
-        console.log(`Data is : ${data} , length is : ${data.length}`)
+        // console.log("yes there is data ! ")
+        // console.log(`Data is : ${data} , length is : ${data.length}`)
         
         // sending error back to user for the report cause it has already been reported  :
          
@@ -368,10 +371,10 @@ export const update_report_status = (req ,res) =>{
       {
 
         const insert_has_query = `insert into user_has_reported values ("${user_name}" , "${post_id}")`
-        console.log("successfully done")
+        // console.log("successfully done")
         db.query(insert_has_query, (err, data) => {
 
-          console.log("yep")
+          // console.log("yep")
           if (err) {return res.status(500).json(err)}
         })
          
@@ -384,13 +387,13 @@ export const update_report_status = (req ,res) =>{
         //     db.query(sample_query, (err, data) => {
 
         //       if (err) return res.status(500).json(err);
-        //       else console.log("inserted suscesufully for the first time ")
+        //       else // console.log("inserted suscesufully for the first time ")
         //       // return res.json("Post has been updated.");
 
         //     });
         //   } 
           
-        //   console.log("donee!")
+        //   // console.log("donee!")
         //   // return res.json("Post has been updated.");
         // });
         
@@ -406,3 +409,43 @@ export const update_report_status = (req ,res) =>{
 };
 
 
+export const add_comment = (req , res) => {
+
+  console.log(req.body)
+  var user_name = req.body[1].username
+  var post_id = req.body[2]
+  var comment_msg = req.body[0]
+  var time = unixTimestamp()
+
+  const comment_insert_query = `Insert into comments (post_id , comment_content , username , created_time) values (${post_id} , '${comment_msg}' , '${user_name}' , ${time})`
+  console.log(comment_insert_query)
+  db.query(comment_insert_query, (err, data) => {
+    if (err) return res.status(500).send(err);
+    // console.log(data)
+    return res.status(200).json(data);
+  });
+
+}
+
+
+export const get_comments = (req , res) =>{
+
+  // const q =  "Select * from posts";
+  // console.log("yesss!!!!sss", req.params.id)
+
+  const comment_query = `Select * from comments where post_id = ${req.params.id}`
+  // console.log("POST ID : ", req.params.id)
+  db.query(comment_query, (err, data) => {
+    if (err){console.log(err)}
+    // console.log(data)
+    else {return res.status(200).json(data)};
+  });
+
+
+
+//   db.query(q, (err, data) => {
+//   if (err) return res.status(500).send(err);
+//   return res.status(200).json(data);
+
+// })} 
+}
