@@ -327,19 +327,21 @@ export const update_report_status = (req ,res) =>{
 
   // // console.log("yeee")
   // // console.log(req.body)
+
+  console.log("THIS IS YOUR DATA :",req.body)
+
   const post_details = req.body[0]
   const user_details = req.body[1]
 
   var total_reports = post_details.reportCount
   const post_id = post_details.post_id
   const user_name = user_details.username
+  const new_report_count = post_details.reportCount + 1
 
   const has_table_query = `Select * from user_has_reported where username = "${user_name}" and post_id = ${post_id}`
   
-  // // console.log(`new likes : ${new_likes} , post id : ${post_id} , user_name : ${user_name} , totalDislikes = ${new_dislikes} `)
-  // const sample_query = `Update posts set totalLikes = ${new_likes} , totalDislikes = ${new_dislikes} where post_id = ${post_id}`
-  
-  const error_msg = " You have already reported this post !"
+
+  const error_msg = " You have already reported this post !" ; const error_msg_2 = "Post does not exist for which you are reporting !"
   
   // 1 : checking if the user has liked or liking for the first time : 
 
@@ -347,35 +349,50 @@ export const update_report_status = (req ,res) =>{
     
     if (err) {
 
-      // return res.status(500).json(err)
-      // // console.log("error here")
-      // console.log(err)
+      console.log("no such post for report !")
 
     }
 
     else {
 
+      // sending report error msg ! 
       if(data.length >0)
       {
-
-        // console.log("yes there is data ! ")
-        // console.log(`Data is : ${data} , length is : ${data.length}`)
-        
-        // sending error back to user for the report cause it has already been reported  :
-         
-        res.json({message : error_msg})
-        
-        
+        res.json({message : error_msg}) 
       }
-      else // if the user is liking for the first time !
+      else // if the user is reporting for the first time !
       {
 
         const insert_has_query = `insert into user_has_reported values ("${user_name}" , "${post_id}")`
+        const insert_report_query = `Update posts set reportCount = ${new_report_count} where post_id = ${post_id}  `
         // console.log("successfully done")
         db.query(insert_has_query, (err, data) => {
 
           // console.log("yep")
           if (err) {return res.status(500).json(err)}
+          else {
+
+            // adding report count in the post :
+            
+            db.query(insert_report_query, (err, data) => {
+
+              // console.log("yep")
+              if (err) {return res.status(500).json(err)}
+              else {
+    
+                // sucess:
+
+                console.log("done successfully!")
+                
+    
+              }
+
+            })
+
+          }
+
+
+
         })
          
         //   else

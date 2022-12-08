@@ -49,7 +49,7 @@ const Comments = (post_id) => {
   
         try {
           const res = await axios.get(`/posts/get_comments/${post_id}`);
-          console.log(res.data)
+          // console.log(res.data)
           set_comment_array(res.data)
           
         } catch (err) {
@@ -77,8 +77,8 @@ const Comments = (post_id) => {
             <div>
                 <div className="comment" >
                 <div className="content">
-                    <p>{comment.user_name}</p>
-                    <p>{getText(comment.comment_content)}</p>
+                    {/* <p>{comment.username}</p> */}
+                    <p> <strong>{comment.username} : </strong>  {getText(comment.comment_content)}</p>
                 </div>
                 </div>
                 <div className="comment_input">

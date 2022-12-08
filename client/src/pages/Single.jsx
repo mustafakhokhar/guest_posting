@@ -84,6 +84,7 @@ const Single = () => {
       const post_array = [post , currentUser]
       const res = await axios.post(`/posts/update_report_status` , post_array);
       set_report_status(res.data.message)
+      console.log(post)
     } catch (err){
       
       console.log(err)
@@ -140,7 +141,7 @@ const Single = () => {
 
           <button onClick = {() => Like(post)}> like : {post.totalLikes}</button>
           <button onClick = {() => Dis_Like(post)}>Dislike : {post.totalDislikes}</button>
-          <button onClick = {() => report_handler(post)}> Report : <strong>{report_status}</strong> </button>
+          <button onClick = {() => report_handler(post)}> Report :{post.reportCount}<strong>{report_status}</strong> </button>
           {Comments(postId)}
         </div>
 
