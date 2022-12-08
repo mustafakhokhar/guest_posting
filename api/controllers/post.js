@@ -241,7 +241,7 @@ export const add_comment = (req , res) => {
 
 
 export const get_comments = (req , res) =>{
-  const comment_query = `Select * from comments where post_id = ${req.params.id}`
+  const comment_query = `Select * from comments where post_id = ${req.params.id} order by created_time asc`
   db.query(comment_query, (err, data) => {
     if (err){console.log(err)}
     else {return res.status(200).json(data)};
