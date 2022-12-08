@@ -120,8 +120,8 @@ const Single = () => {
             alt=""
           />}
           <div className="info">
-            <span>{post.writer_id}</span>
-            <p>Posted {moment(post.date).fromNow()}</p>
+            <span>Post by : {post.writer_id}</span>
+            {/* <p>Posted {moment(post.date).fromNow()}</p> */}
           </div>
           {currentUser.username === post.username && (
             <div className="edit">
@@ -132,16 +132,16 @@ const Single = () => {
             </div>
           )}
         </div>
-        <h1>{post.tag3}</h1>
+        <h1 className="single_tag">@{post.tag1}, @{post.tag2} , @{post.tag3}</h1>
         <p
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(post.post_content),
           }}
         ></p>
 
-          <button onClick = {() => Like(post)}> like : {post.totalLikes}</button>
-          <button onClick = {() => Dis_Like(post)}>Dislike : {post.totalDislikes}</button>
-          <button onClick = {() => report_handler(post)}> Report :{post.reportCount}<strong>{report_status}</strong> </button>
+          <button className = "post_button" onClick = {() => Like(post)}> like : {post.totalLikes}</button>
+          <button className = "post_button" onClick = {() => Dis_Like(post)}>Dislike : {post.totalDislikes}</button>
+          <button className = "post_button" onClick = {() => report_handler(post)}> Report Count:{post.reportCount}<strong>{report_status}</strong> </button>
           {Comments(postId)}
         </div>
 
