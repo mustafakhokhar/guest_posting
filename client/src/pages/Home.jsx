@@ -113,7 +113,7 @@ const Home = () => {
 
   return (
     
-    <div className="home">
+    <div className="home container-bg">
       <div className="posts">
         {posts.map((post) => ( 
           <div className="post" key={post.post_id}>
