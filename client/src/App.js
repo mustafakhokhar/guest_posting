@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Write from "./pages/Write";
 import Home from "./pages/Home";
 import Single from "./pages/Single";
+import SingleAdmin from "./pages/SingleAdmin";
 import Admin from "./pages/admin";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -26,10 +27,6 @@ const Layout = () => {
   );
 };
 
-// making our paths via router
-// --> normal get path 
-// --> home page path 
-// --> register path
 
 const router = createBrowserRouter([ 
   {
@@ -49,6 +46,10 @@ const router = createBrowserRouter([
         element: <Write />,
       },
     ],
+  },
+  {
+    path: "/postApproval/:id",
+    element: <SingleAdmin />,
   },
   {
     path: "/register",
