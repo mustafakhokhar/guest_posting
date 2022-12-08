@@ -61,7 +61,8 @@ create_user_details = "Create table user_info (username varchar(15) , full_name 
 create_posts = "CREATE TABLE posts (post_id int NOT NULL, writer_id varchar(15) NOT NULL, post_content varchar(500), admin_approval_status int, tag1 varchar(10), tag2 varchar (10), tag3 varchar (10), totalLikes int, totalDislikes int, reportCount int, totalComments int, Foreign Key (writer_id) REFERENCES user_info(username), PRIMARY KEY (post_id))"
 create_has_reported = "CREATE TABLE user_has_reported (username varchar(15) NOT NULL, post_id int NOT NULL, Foreign Key (username) References user_info(username), Foreign Key (post_id) References posts(post_id), PRIMARY KEY (username, post_id))"
 create_has_liked = "CREATE TABLE user_has_liked (username varchar(15) NOT NULL, isLiekd int NOT NULL,post_id int NOT NULL, Foreign Key (username) References user_info(username), Foreign Key (post_id) References posts(post_id), PRIMARY KEY (username, post_id))"
-create_comments = "Create Table comments (comment_id INT NOT NULL, post_id INT NOT NULL, comment_content varchar(500), username varchar(15), created_time Decimal(20,5), Foreign Key (username) References user_info(username),PRIMARY KEY (comment_id))"
+// create_comments = "Create Table comments (comment_id INT NOT NULL, post_id INT NOT NULL, comment_content varchar(500), username varchar(15), created_time Decimal(20,5), Foreign Key (username) References user_info(username),PRIMARY KEY (comment_id))"
+create_comments = "Create Table comments (comment_id INT NOT NULL AUTO_INCREMENT, post_id INT NOT NULL, comment_content varchar(500), username varchar(15), created_time Decimal(20, 5), Foreign Key (username) References user_info(username),PRIMARY KEY (comment_id))"
 
 
 

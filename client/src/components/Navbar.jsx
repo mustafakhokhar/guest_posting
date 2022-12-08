@@ -92,7 +92,7 @@ const Navbar = () => {
           (navigateTologin())
           }
           <span className="write-button">
-            <Link className="link">
+            <Link className="link" to="/write">
               Write
             </Link>
           </span>
