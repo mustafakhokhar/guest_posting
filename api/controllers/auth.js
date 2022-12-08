@@ -37,6 +37,23 @@ export const register = (req, res) => {
   });
 };
 
+
+export const admin = (req, res) => {
+  //CHECK EXISTING USER
+
+  const q = "SELECT * FROM posts where admin_approval_status = 0"
+
+  console.log(req.body)
+  db.query(q, (err, data) => {
+    console.log(err)
+    if (err) return res.status(500).json(err);
+    console.log(data)
+    return data
+    
+  });
+};
+
+
 export const login = (req, res) => {
   //CHECK USER
 

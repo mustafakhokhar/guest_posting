@@ -7,9 +7,13 @@ import {
 import ForgotPassword from "./pages/Forgotpass";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Write from "./pages/Write";
 import Home from "./pages/Home";
+import Single from "./pages/Single";
+import Admin from "./pages/admin";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
 import "./style.scss"
 
 const Layout = () => {
@@ -36,6 +40,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      {
+        path: "/post/:id",
+        element: <Single />,
+      },
+      {
+        path: "/write",
+        element: <Write />,
+      },
     ],
   },
   {
@@ -47,8 +59,12 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/ForgotPass",
+    path: "/forgotpassword",
     element: <ForgotPassword />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
 ]);
 

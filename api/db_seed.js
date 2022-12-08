@@ -58,6 +58,13 @@ function createTable(CreateQuerry)
 // CREATE WEATHER QUERY :
 
 create_user_details = "Create table user_info (username varchar(15) , full_name varchar(50),  password varchar(15) , security_1 varchar(50) , security_2 varchar(50) , security_3 varchar(50) , status varchar(8) , total_reports INT , is_account_ban varchar(20), primary key(username))"
+create_posts = "CREATE TABLE posts (post_id int NOT NULL, writer_id varchar(15) NOT NULL, post_content varchar(500), admin_approval_status int, tag1 varchar(10), tag2 varchar (10), tag3 varchar (10), totalLikes int, totalDislikes int, reportCount int, totalComments int, Foreign Key (writer_id) REFERENCES user_info(username), PRIMARY KEY (post_id))"
+create_has_reported = "CREATE TABLE user_has_reported (username varchar(15) NOT NULL, post_id int NOT NULL, Foreign Key (username) References user_info(username), Foreign Key (post_id) References posts(post_id), PRIMARY KEY (username, post_id))"
+create_has_liked = "CREATE TABLE user_has_liked (username varchar(15) NOT NULL, isLiekd int NOT NULL,post_id int NOT NULL, Foreign Key (username) References user_info(username), Foreign Key (post_id) References posts(post_id), PRIMARY KEY (username, post_id))"
+create_comments = "Create Table comments (comment_id INT NOT NULL, post_id INT NOT NULL, comment_content varchar(500), username varchar(15), created_time Decimal(20,5), Foreign Key (username) References user_info(username),PRIMARY KEY (comment_id))"
+
+
+
 
 connectionString.connect( (error)=>
 {
@@ -83,7 +90,11 @@ connectionString.connect( (error)=>
                     
                     // await createTable(CreateQuerry)
                     
-                    await createTable(create_user_details)
+                    // await createTable(create_user_details)
+                    // await createTable(create_posts)
+                    // await createTable(create_has_reported)
+                    // await createTable(create_has_liked)
+                    await createTable(create_comments)
                     
                 }
                 catch(err)

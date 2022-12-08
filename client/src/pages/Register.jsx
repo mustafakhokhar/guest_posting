@@ -88,7 +88,7 @@ const Register = () => {
         <input
           required
           type="password"
-          placeholder="e.g PDC_f00d$uck5"
+          placeholder="e.g PDC5"
           name="password"
           onChange={handleChange}
         />
@@ -124,4 +124,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register

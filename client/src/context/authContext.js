@@ -8,6 +8,12 @@ export const AuthContexProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("user")) || null
   );
 
+  const admin = async (inputs) => {
+    const res = await axios.post("/auth/admin", inputs);
+    console.log("authcontext.js:",res.data)
+    setCurrentUser(res.data);
+  };
+
   const login = async (inputs) => {
     const res = await axios.post("/auth/login", inputs);
     setCurrentUser(res.data);
@@ -23,8 +29,8 @@ export const AuthContexProvider = ({ children }) => {
   }, [currentUser]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, login, logout, admin }}>
       {children}
     </AuthContext.Provider>
   );
-};
+}
