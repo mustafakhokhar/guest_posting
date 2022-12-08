@@ -29,7 +29,7 @@ const Admin = () => {
 
     return (
         <div className="admin">
-            <h1>HELLO BITCHES</h1>
+            <h1>HELLO You are on the admin page</h1>
             <button onClick={handleposts}>post apporval</button>
             <button onClick={handleposts}>ban user</button>
             <h2>Printing in console</h2>
