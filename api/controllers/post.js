@@ -7,6 +7,9 @@ function unixTimestamp (date = Date.now()) {
   return Math.floor(date / 1000)
 }
 
+var i= 0
+
+
 export const getPosts = (req, res) => {
   // const q = req.query.cat
     // ? "SELECT * FROM posts WHERE cat=?"
@@ -36,31 +39,53 @@ export const getPost = (req, res) => {
   });
 };
 
+
+
+
+
+
+
+
 export const addPost = (req, res) => {
+  console.log("Inside addPost")
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const q =
-      "INSERT INTO posts(`title`, `desc`, `img`, `cat`, `date`,`uid`) VALUES (?)";
+    const q = "INSERT INTO guest_hosting_site_new.posts(`post_id`,`writer_id`,`post_content`,`admin_approval_status`,`tag1`,`tag2`,`tag3`,`totalLikes`,`totalDislikes`,`reportCount`,`totalComments`) VALUES (?)";
+
 
     const values = [
-      req.body.title,
+      i++,
+      req.body.usersname,
       req.body.desc,
-      req.body.img,
-      req.body.cat,
-      req.body.date,
-      userInfo.id,
+      0,
+      req.body.tag1,
+      req.body.tag2,
+      req.body.tag3,
+      0,
+      0,
+      0,
+      0
     ];
 
     db.query(q, [values], (err, data) => {
-      if (err) return res.status(500).json(err);
+      if (err) return res.status(550).json(err);
       return res.json("Post has been created.");
     });
   });
 };
+
+
+
+
+
+
+
+
+
 
 export const deletePost = (req, res) => {
   const token = req.cookies.access_token;

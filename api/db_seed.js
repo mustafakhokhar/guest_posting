@@ -81,7 +81,7 @@ connectionString.connect( (error)=>
             else
             {
 
-                connectionString.query("USE Guest_hosting_site;",(err , result) =>{
+                connectionString.query("USE Guest_hosting_site_new;",(err , result) =>{
                     console.log("error occured in using your databases!")
                 })
 
@@ -91,10 +91,10 @@ connectionString.connect( (error)=>
                     
                     // await createTable(CreateQuerry)
                     
-                    // await createTable(create_user_details)
-                    // await createTable(create_posts)
-                    // await createTable(create_has_reported)
-                    // await createTable(create_has_liked)
+                    await createTable(create_user_details)
+                    await createTable(create_posts)
+                    await createTable(create_has_reported)
+                    await createTable(create_has_liked)
                     await createTable(create_comments)
                     
                 }
