@@ -593,6 +593,8 @@ $lightGreen: #9aecec;
 
     .add {
       margin-top: 20px;
+      padding-left: 30px;
+      padding-right: 30px;
       display: flex;
       gap: 20px;
 
@@ -601,6 +603,41 @@ $lightGreen: #9aecec;
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        span {
+          cursor: pointer;
+        }
+
+      .pollbutton {
+        // button {
+        //   width: max-content;
+        //   padding: 10px 20px;
+        //   border: none;
+        //   cursor: pointer;
+        //   background-color: white;
+        //   border: 1px solid teal;
+        //   color: teal;
+        //   display: flex;
+        //   flex-direction: row;
+
+        //   &:hover {
+        //     border: 1px solid white;
+        //     background-color: $lightGreen;
+        //     color: black;
+        //   }
+        // }
+        display: block;
+        width: 20%;
+        border: none;
+        background-color: teal;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 12px;
+        
+        
+      }
 
         input {
           padding: 10px;
@@ -647,6 +684,8 @@ $lightGreen: #9aecec;
           .buttons{
             display: flex;
             justify-content: space-between;
+            height: 100px;
+
 
             :first-child{
               cursor: pointer;
@@ -654,6 +693,8 @@ $lightGreen: #9aecec;
               background-color: white;
               border: 1px solid teal;
               padding: 3px 5px;
+              width: 180px;
+              border-radius: 12px;
             }
             :last-child{
               cursor: pointer;
@@ -672,6 +713,13 @@ $lightGreen: #9aecec;
           }
         }
       }
+    }
+    .view_post_button{
+      padding-left: 30px;
+    }
+    .view_my_posts{
+      padding-left: 30px;
+      padding-right: 30px;
     }
   
   }

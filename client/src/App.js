@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/Forgotpass";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Write from "./pages/Write";
+import Polls from "./pages/Polls";
 import Home from "./pages/Home";
 import Single from "./pages/Single";
 import SingleAdmin from "./pages/SingleAdmin";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/write",
         element: <Write />,
+      },
+      {
+        path: "/polls",
+        element: <Polls />,
       },
     ],
   },
