@@ -83,14 +83,17 @@ const Home = () => {
         {posts.map((post) => ( 
           <div className="post" key={post.post_id}>
             <div className="content">
-              <h2 className="title">{post.tag1} </h2>
             <Link className="link" to={`/post/${post.post_id}`}>
+              <h2 className="title">{post.writer_id} </h2>
+            
               <p className="content">{getText(post.post_content)}</p>
-              </Link>
+              {/* </Link> */}
               <div>
                 <p className="tag">{post.tag2} {post.tag3}</p>
               </div>
+              </Link>
             </div>
+            
           </div>
         ))}
       </div>
