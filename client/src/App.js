@@ -52,12 +52,25 @@ const router = createBrowserRouter([
         path: "/polls",
         element: <Polls />,
       },
+      {
+        path: "/postApproval/:id",
+        element: <SingleAdmin />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
+      },
+      {
+        path: "/user",
+        element: <Users />,
+      },
     ],
   },
-  {
-    path: "/postApproval/:id",
-    element: <SingleAdmin />,
-  },
+  
   {
     path: "/register",
     element: <Register />,
@@ -70,18 +83,7 @@ const router = createBrowserRouter([
     path: "/forgotpassword",
     element: <ForgotPassword />,
   },
-  {
-    path: "/admin",
-    element: <Admin />,
-  },
-  {
-    path: "/search",
-    element: <Search />,
-  },
-  {
-    path: "/user",
-    element: <Users />,
-  },
+  
 ]);
 
 function App() {

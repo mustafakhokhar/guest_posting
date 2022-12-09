@@ -66,23 +66,25 @@ const Users = () => {
       });
       
     return (
-        <div>   
-            <div className="users">
+        <div >   
+            <div >
+              <div className="searchedPost">
                 {search_array.map((result,key) => ( 
-                <div>
-                    <div className="content">
+                <div >
+                    <div>
                         <br/>
-                        <p> 
-                            <strong>Username:{result.username}</strong> <br/> 
-                            Fullname: {result.full_name} <br/> 
-                            Status: {result.status} <br/> 
-                            Number of reports: {result.total_reports} <br/>
-                            <button onClick={event =>handleClick(event, key, search_array)}>Ban user</button>
-                        </p>
+                        <div className="searchcontent"> 
+                            <strong className="userN">Username: {result.username}</strong> <br/> 
+                            <p className="userD"><strong> Fullname: </strong>{result.full_name}</p> <br/> 
+                            <p className="userD"><strong> Status: </strong>{result.status}</p> <br/> 
+                            <p className="userD"><strong> Number of reports: </strong>{result.total_reports}</p> <br/> 
+                            <button className="banUserBut" onClick={event =>handleClick(event, key, search_array)}> <strong>Double Tap = Ban</strong></button>
+                        </div>
                         <br/>
                     </div>
                 </div>
             ))}
+            </div>
             </div>
         </div> 
     );

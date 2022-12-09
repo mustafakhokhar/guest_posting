@@ -25,7 +25,11 @@ const Navbar = () => {
     navigate('/search');
   };
   
-  
+  const navigateToHome = () => {
+    // 👇️ navigate to /Login
+    navigate('/');
+  };
+
   function isWriter(){
     if (currentUser?.status === 'writer'){
       return true
@@ -44,7 +48,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="container">
         <div className="logo">
-          <h1>F-Society</h1>
+          <h1 onClick={navigateToHome}>F-Society</h1>
         </div>
         <div>
         <span className="hello" >Hello 👋</span>
