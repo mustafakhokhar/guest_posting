@@ -87,6 +87,7 @@ const Home = () => {
               <h2 className="title">{post.writer_id} </h2>
               <p className="content">{getText(post.post_content)}</p>
               <div>
+              <p>👍{post.totalLikes} 👎{post.totalDislikes} 💭{post.totalComments}</p>
                 <p className="tag">{post.tag2} {post.tag3}</p>
               </div>
               </Link>
