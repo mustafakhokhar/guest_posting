@@ -73,21 +73,20 @@ const Comments = (post_id) => {
 
     return (
         <div>
+          <div>.</div>
+          <div className="commentInpu">
+          <input className ="comment_input" onChange={(e) => set_comment_msg(e.target.value)}></input>
+          <button className = "comment_button" onClick = {() => comment_adder()} > ✍️ Comment </button>
+          </div>
             {comment_array.map((comment) => ( 
             <div>
                 <div className="comment" >
-                <div className="content">
-                    {/* <p>{comment.username}</p> */}
-                    <p> <strong>{comment.username} : </strong>  {getText(comment.comment_content)}</p>
+                <div >
+                    <p className="DisplayComment"> <strong>{comment.username} : </strong>  {getText(comment.comment_content)}</p>
                 </div>
                 </div>
-                {/* <div className="comment_input">
-                </div> */}
             </div>
         ))}
-        <div>Leave a comment : </div>
-         <input className ="comment_input" onChange={(e) => set_comment_msg(e.target.value)}></input>
-         <button className = "comment_button" onClick = {() => comment_adder()} > Submit </button>
         </div>
         )
 
