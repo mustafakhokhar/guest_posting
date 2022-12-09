@@ -9,18 +9,18 @@ Technologies used:
 
 Features:
 Actors: Reader(R), Writer(W), Admin(A)
--Sign up      (R,W)
--Sign In      (R,W)
--Search       (R,W)
--Like/Dislike (R,W)
--Comment      (R,W)
--Create Poll    (W)
--Write Post     (W)
--Delete Post    (W)
--ViewMyPost     (W)
--ReportPost     (R)
--PostApproval   (A)
--BanUser        (A)
+- Sign up      (R,W)
+- Sign In      (R,W)
+- Search       (R,W)
+- Like/Dislike (R,W)
+- Comment      (R,W)
+- Create Poll    (W)
+- Write Post     (W)
+- Delete Post    (W)
+- ViewMyPost     (W)
+- ReportPost     (R)
+- PostApproval   (A)
+- BanUser        (A)
 
 MySQL Database:
 - Tables:
@@ -32,7 +32,7 @@ MySQL Database:
   - userHasReported (username, postID)
 
 To Run the Project:
-0) Make Sure .env has correct hostname, password and other credentials AND Database has relevant tables/data.
+- Make Sure .env has correct hostname, password and other credentials AND Database has relevant tables/data.
 1) Git clone repository
 2) In Code Editor Terminal
    - Open "API" folder
