@@ -252,3 +252,23 @@ export const get_comments = (req , res) =>{
     else {return res.status(200).json(data)};
   });
 }
+
+export const getSearch = (req, res) => {
+  // const q = req.query.cat
+  const q =  `Select * from posts where tag1 = '${req.params.tag}' or tag2 = '${req.params.tag}' or tag3 = '${req.params.tag}'`;
+    // console.log("yesssssdsdsds\n")
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).send(err);
+    // console.log(data)
+    return res.status(200).json(data);
+  });
+};
+
+export const getSearchk = (req, res) => {
+  const q =  `Select * from posts where post_content like '%${req.params.word}%'`;
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).send(err);
+    console.log(data)
+    return res.status(200).json(data);
+  });
+};

@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Single from "./pages/Single";
 import SingleAdmin from "./pages/SingleAdmin";
 import Admin from "./pages/admin";
+import Search from "./pages/search";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
   },
 ]);
 
