@@ -25,12 +25,12 @@ router.get("/searcht/:tag", getSearch);
 router.get("/searchk/:word", getSearchk);
 router.post("/", addPost);
 router.post("/addPoll", addPoll);
-router.post("/:id", deletePost);
-router.put("/:id", updatePost);
 router.post("/update_like",update_like);
 router.post("/update_dislike",update_dislike);
 router.post("/update_report_status",update_report_status);
 router.post("/add_comment", add_comment);
+router.post("/:id", deletePost);
+router.put("/:id", updatePost);
 
 
 
