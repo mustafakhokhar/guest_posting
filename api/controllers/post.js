@@ -97,7 +97,6 @@ export const addPost = (req, res) => {
     ];
 
     db.query(q, [values], (err, data) => {
-      if (err) return res.status(550).json(err);
       if (err) return res.status(600).json(err);
       return res.json("Post has been created.");
     });
@@ -496,7 +495,29 @@ export const add_comment = (req , res) => {
   db.query(comment_insert_query, (err, data) => {
     if (err) return res.status(500).send(err);
     // console.log(data)
-    return res.status(200).json(data);
+    else { // adding the comment count in into post :
+
+      const extract_q = `Select totalComments from posts where post_id = ${post_id}`
+      db.query(extract_q, (err, result) => {
+        // console.log("yesss")
+        // console.log(result[0].totalComments)
+        var initial_comments = result[0].totalComments + 1
+        // console.log("new comments are", initial_comments)
+
+        const add_count = `Update posts set totalComments = ${initial_comments} where post_id = ${post_id}`
+
+        // inserting into the database :
+
+        db.query(add_count, (err, data) => {
+          console.log("sucesssss")
+          return res.status(200).json(data);
+
+        })
+
+
+      })
+
+    }
   });
 
 }
@@ -536,3 +557,25 @@ export const view_my_posts = (req , res) =>{
     else {return res.status(200).json(data)};
   });
 }
+
+
+
+export const getSearch = (req, res) => {
+  // const q = req.query.cat
+  const q =  `Select * from posts where tag1 = '${req.params.tag}' or tag2 = '${req.params.tag}' or tag3 = '${req.params.tag}'`;
+    // console.log("yesssssdsdsds\n")
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).send(err);
+    // console.log(data)
+    return res.status(200).json(data);
+  });
+};
+
+export const getSearchk = (req, res) => {
+  const q =  `Select * from posts where post_content like '%${req.params.word}%'`;
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).send(err);
+    // console.log(data)
+    return res.status(200).json(data);
+  });
+};

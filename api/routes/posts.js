@@ -11,7 +11,9 @@ import {
   add_comment,
   get_comments,
   addPoll,
-  view_my_posts
+  view_my_posts,
+  getSearch,
+  getSearchk,
 } from "../controllers/post.js";
 
 const router = express.Router();
@@ -19,6 +21,8 @@ router.get("/get_comments/:id", get_comments);
 router.get("/my_posts/:id", view_my_posts);
 router.get("/", getPosts);
 router.get("/:id", getPost);
+router.get("/searcht/:tag", getSearch);
+router.get("/searchk/:word", getSearchk);
 router.post("/", addPost);
 router.post("/addPoll", addPoll);
 router.post("/:id", deletePost);

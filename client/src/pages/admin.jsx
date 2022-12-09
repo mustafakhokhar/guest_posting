@@ -43,22 +43,27 @@ const Admin = () => {
     return doc.body.textContent
   }
 
-
   return (
     <div>
-        <div className="banuser">
-            <Link to="/user">Ban Users</Link>
+        <div className="banUser">
+            <Link to="/user"><p className="adminRedirectioncss">Ban Users</p></Link>
         </div>
-
+        <div className="unappPost" >
+        <p >Unapproved Posts</p>
+        </div>
         <div className="home">
         <div className="posts">
           {posts.map((post) => ( 
             <div className="post" key={post.post_id}>
               <div className="content">
                 <Link className="link" to={`/postApproval/${post.post_id}`}>
-                  <h3>tags: {post.tag1} {post.tag2} {post.tag3}</h3>
+                <h2 className="title">{post.writer_id} </h2>
+                <p className="content">{getText(post.post_content)}</p>
+                <div className="adminatagu">
+                <p className="approv">Click to Approve</p>
+                <p className="tag">{post.tag2} {post.tag3}</p>
+              </div>
                 </Link>
-                <p>Content: {getText(post.post_content)}</p>
               </div>
             </div>
           ))}

@@ -63,29 +63,21 @@ const SingleAdmin = () => {
     <div className="single">
       <div className="content">
         <div className="user">
-          {/* {post.userImg && <img
-            src={post.userImg}
-            alt=""
-          />} */}
-          <div className="info">
-            <span>{post.writer_id}</span>
-            <p>Posted {moment(post.date).fromNow()}</p>
+          <div className="repo">
           </div>
-          {currentUser.username === post.username && (
-            <div className="edit">
-              <Link to={`/write?edit=2`} state={post}>
-                <img src={Edit} alt="" />
-              </Link>
-            </div>
-          )}
+              <div className="userSingle">
+                <span>{post.writer_id}</span>
+              </div>
         </div>
-        <h1>{post.tag3}</h1>
-        <p
+        
+        <p className="postContent"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(post.post_content),
           }}
         ></p>
-          <button onClick = {() => approval_handler(post)}> Approve </button>
+        <h1 className="tagsSingle">{post.tag1}   {post.tag2}   {post.tag3}</h1>
+        <div className="buttonsSingle"></div>
+          <button onClick = {() => approval_handler(post)}> APPROVE </button>
         </div>
     </div>
   );

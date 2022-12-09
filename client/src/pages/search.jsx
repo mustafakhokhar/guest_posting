@@ -9,9 +9,10 @@ import { AuthContext } from "../context/authContext";
 
 const Search = () => {
     
-    const [search_word , set_search_k] = useState(null)
+    const [search_word , set_search_k] = useState([])
     const [search_array , set_search_array ] = useState([])
-    const [search_tag , set_search_t] = useState(null)
+    const [search_tag , set_search_t] = useState([])
+    const [order , set_sorting_by ] = useState([])
     const navigate = useNavigate();
     
 
@@ -53,6 +54,27 @@ const Search = () => {
         set_search_k(e);
     }
 
+    const likes = async() => {
+        const res = await axios.get(`/posts/searcht/${search_tag}`);
+        set_search_array(res)
+        const sorted = [...search_array].sort((a,b) => b.totalLikes - a.totalLikes)
+        set_search_array(sorted)
+    }
+
+    const dislikes = async() => {
+        const res = await axios.get(`/posts/searcht/${search_tag}`);
+        set_search_array(res)
+        const sorted = [...search_array].sort((a,b) => b.totalDislikes - a.totalDislikes)
+        set_search_array(sorted)
+    }
+
+    const engagement = async() => {
+        const res = await axios.get(`/posts/searcht/${search_tag}`);
+        set_search_array(res)
+        const sorted = [...search_array].sort((a,b) => b.totalComments - a.totalComments)
+        set_search_array(sorted)
+    }
+
       
     return (
         <div>   
@@ -62,7 +84,9 @@ const Search = () => {
                 <input onChange={(e) => set_vals(e.target.value)}></input>
                 <button onClick = {() => searchk()}> Search keyword</button>
                 <button onClick = {() => searcht()}> Search tag</button>
-
+                <button onClick = {() => likes()}> sort by likes</button>
+                <button onClick = {() => dislikes()}> sort by dislikes</button>
+                <button onClick = {() => engagement()}> sort by engagement</button>
             </div>
             <div>
                 {search_array.map((result) => ( 
@@ -70,7 +94,7 @@ const Search = () => {
                     <div className="content">
                         <br/>
                         <p> <strong>Writer:{result.writer_id}</strong> <br/> tags: {result.tag1} {result.tag2} {result.tag3}, <br/> content: {getText(result.post_content)}
-                            <br/> Likes: {result.totalLikes} <br/> Dislikes: {result.totalDislikes}
+                            <br/> Likes: {result.totalLikes} <br/> Dislikes: {result.totalDislikes} <br/> Total comments: {result.totalComments}
                         </p>
                         <br/>
                     </div>

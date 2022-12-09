@@ -14,6 +14,28 @@ const Navbar = () => {
     // 👇️ navigate to /Login
     navigate('/admin');
   };
+  const navigateToWrite = () => {
+    // 👇️ navigate to /Login
+    if (isWriter() == true) {
+      navigate('/write');
+    }
+  };
+  const navigateToSearch = () => {
+    // 👇️ navigate to /Login
+    navigate('/search');
+  };
+  
+  const navigateToHome = () => {
+    // 👇️ navigate to /Login
+    navigate('/');
+  };
+
+  function isWriter(){
+    if (currentUser?.status === 'writer'){
+      return true
+    }
+    return false
+  }
 
   function isAdmin(){
     if (currentUser?.status === 'admin'){
@@ -26,28 +48,21 @@ const Navbar = () => {
     <div className="navbar">
       <div className="container">
         <div className="logo">
-          <h1>F-Society</h1>
+          <h1 onClick={navigateToHome}>F-Society</h1>
         </div>
         <div>
         <span className="hello" >Hello 👋</span>
         <span className="username" >{currentUser?.username}</span>
         </div>
         <div className="links">
-        <span className="adminRedirectioncss" onClick={isAdmin()? navigateToAdmin:undefined}>{currentUser?.status}</span>
+        <span className="adminRedirectioncss" onClick={navigateToSearch}>🔎Search</span>
+        <div>
+        </div>
+        <span className="adminRedirectioncss" onClick={isAdmin()? navigateToAdmin:navigateToWrite}>{currentUser?.status}</span>
           {currentUser ? 
           (<span className="logout" onClick={logout}>Logout</span>):
           (navigateTologin())
           }
-          <span className="write-button">
-            <Link className="link" to="/write">
-              Write
-            </Link>
-          </span>
-          {/* <span className="write-button">
-            <Link className="link" to="/polls">
-              POLL
-            </Link>
-          </span> */}
         </div>
       </div>
     </div>
