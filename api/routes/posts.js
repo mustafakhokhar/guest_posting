@@ -9,13 +9,17 @@ import {
   update_dislike,
   update_report_status,
   add_comment,
-  get_comments
+  get_comments, 
+  getSearch,
+  getSearchk,
 } from "../controllers/post.js";
 
 const router = express.Router();
 router.get("/get_comments/:id", get_comments);
 router.get("/", getPosts);
 router.get("/:id", getPost);
+router.get("/searcht/:tag", getSearch);
+router.get("/searchk/:word", getSearchk);
 router.post("/", addPost);
 router.delete("/:id", deletePost);
 router.put("/:id", updatePost);
