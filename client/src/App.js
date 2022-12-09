@@ -11,9 +11,12 @@ import Write from "./pages/Write";
 import Polls from "./pages/Polls";
 import Home from "./pages/Home";
 import Single from "./pages/Single";
+import SingleAdmin from "./pages/SingleAdmin";
 import Admin from "./pages/admin";
+import Search from "./pages/search";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Users from "./pages/user";
 
 import "./style.scss"
 
@@ -27,10 +30,6 @@ const Layout = () => {
   );
 };
 
-// making our paths via router
-// --> normal get path 
-// --> home page path 
-// --> register path
 
 const router = createBrowserRouter([ 
   {
@@ -56,6 +55,10 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/postApproval/:id",
+    element: <SingleAdmin />,
+  },
+  {
     path: "/register",
     element: <Register />,
   },
@@ -70,6 +73,14 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
+  },
+  {
+    path: "/user",
+    element: <Users />,
   },
 ]);
 

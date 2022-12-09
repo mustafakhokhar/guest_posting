@@ -113,39 +113,27 @@ const Single = () => {
   return (
     <div className="single">
       <div className="content">
-        {/* <img src={`../upload/${post?.img}`} alt="" /> */}
         <div className="user">
-          {post.userImg && <img
-            src={post.userImg}
-            alt=""
-          />}
-          <div className="info">
-            <span>{post.writer_id}</span>
-            <p>Posted {moment(post.date).fromNow()}</p>
+          <div className="repo">
           </div>
-          {currentUser.username === post.username && (
-            <div className="edit">
-              <Link to={`/write?edit=2`} state={post}>
-                <img src={Edit} alt="" />
-              </Link>
-              <img onClick={handleDelete} src={Delete} alt="" />
-            </div>
-          )}
+              <div className="userSingle">
+                <span>{post.writer_id}</span>
+              </div>
         </div>
-        <h1>{post.tag3}</h1>
-        <p
+        
+        <p className="postContent"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(post.post_content),
           }}
         ></p>
-
-          <button onClick = {() => Like(post)}> like : {post.totalLikes}</button>
-          <button onClick = {() => Dis_Like(post)}>Dislike : {post.totalDislikes}</button>
-          <button onClick = {() => report_handler(post)}> Report :{post.reportCount}<strong>{report_status}</strong> </button>
+        <h1 className="tagsSingle">{post.tag1}   {post.tag2}   {post.tag3}</h1>
+          <div className="buttonsSingle">
+          <button className = "button" onClick = {() => Like(post)}> 👍UpVote : {post.totalLikes}</button>
+          <button className = "button" onClick = {() => Dis_Like(post)}>👎DownVote : {post.totalDislikes}</button>
+          <button className = "button" onClick = {() => report_handler(post)}> 🚩Reports:{post.reportCount}<strong>{report_status}</strong> </button>
+          </div>
           {Comments(postId)}
         </div>
-
-      
     </div>
   );
 };
