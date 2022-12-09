@@ -82,17 +82,12 @@ const Home = () => {
       <div className="posts">
         {posts.map((post) => ( 
           <div className="post" key={post.post_id}>
-            {/* <div className="img">
-              <img src={`../upload/${post.img}`} alt="" />
-            </div> */}
             <div className="content">
-              <Link className="link" to={`/post/${post.post_id}`}>
-                <h3>tags: {post.tag1} {post.tag2} {post.tag3}</h3>
+              <h2>{post.tag1} </h2>
+            <Link className="link" to={`/post/${post.post_id}`}>
+              <p>{getText(post.post_content)}</p>
               </Link>
-              <p>Content: {getText(post.post_content)}</p>
-               {/* <Link className="link" to={`/post/${post.id}`}>
-                <button>Read more</button>Hello wordlsss
-              </Link> */}
+                <p>{post.tag2} {post.tag3}</p>
             </div>
           </div>
         ))}
