@@ -7,10 +7,6 @@ import moment from "moment";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import DOMPurify from "dompurify";
-// import React, { useContext } from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/authContext";
-
 
 
 const Write = () => {
@@ -20,7 +16,6 @@ const Write = () => {
   const [tag2, setTag2] = useState(state?.desc || "");
   const [tag3, setTag3] = useState(state?.desc || "");
   const [my_posts , set_my_posts] = useState([])
-  // user id :
 
   const navigate = useNavigate()
   const { currentUser } = useContext(AuthContext);
@@ -28,12 +23,7 @@ const Write = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-
-
-
-  
     try {
-      
         await axios.post(`/posts/`, {
             desc: value,
             date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
@@ -72,6 +62,7 @@ const Write = () => {
         </button>
         <div className="editorContainer">
           <ReactQuill
+            placeholder="Post (Word Limit: 500 characters)"
             className="editor"
             theme="snow"
             value={value}
@@ -93,41 +84,33 @@ const Write = () => {
           placeholder="Tag3"
           onChange={(e) => setTag3(e.target.value)}
         />
+          <button className="pollbutton">
+            <p className="publish" onClick={handleClick}>Publish</p>
+          </button>
       </div>
+      
       <div className="menu">
         <div className="item">
-          <h1>Publish</h1>
-          
-          
-          <div className="buttons">
-            <button onClick={handleClick}>Publish</button>
+        <div className="view_post_button">
+          <h2 onClick={search_posts}>View My Posts</h2>
+          </div>
+          <div className="view_my_posts">
+          {my_posts.map((post) => ( 
+              <div className="view_post_content">
+                  <p 
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(post.post_content),
+                    }}
+                  ></p>
+                  {/* <h1 className="view_post_tags">{post.tag1} {post.tag2} {post.tag3}</h1> */}
+              </div>
+              ))}
           </div>
         </div>
       </div>
 
     </div >
-    <div className="view_post_button">
-    <h2 >View My Posts</h2>
-    <button onClick={search_posts}>View my posts</button>
-    </div>
-    {/*  Printing user posts :  */}
-    <div className="view_my_posts">
-            {my_posts.map((post) => ( 
-            <div>
-                <div>
-                <div>
-                    {/* <p>{comment.username}</p> */}
-                    <p> <strong>{post.tag1} : </strong></p>
-                    <p
-                      dangerouslySetInnerHTML={{
-                       __html: DOMPurify.sanitize(post.post_content),
-                      }}
-                    ></p>
-                </div>
-                </div>
-            </div>
-        ))}
-      </div>
+    
   </div>
   );
 };

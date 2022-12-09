@@ -641,29 +641,9 @@ $lightGreen: #9aecec;
         span {
           cursor: pointer;
         }
-      
-      
-
       .pollbutton {
-        // button {
-        //   width: max-content;
-        //   padding: 10px 20px;
-        //   border: none;
-        //   cursor: pointer;
-        //   background-color: white;
-        //   border: 1px solid teal;
-        //   color: teal;
-        //   display: flex;
-        //   flex-direction: row;
-
-        //   &:hover {
-        //     border: 1px solid white;
-        //     background-color: $lightGreen;
-        //     color: black;
-        //   }
-        // }
         display: block;
-        width: 20%;
+        // width: 20%;
         border: none;
         background-color: teal;
         padding: 14px 28px;
@@ -671,29 +651,37 @@ $lightGreen: #9aecec;
         cursor: pointer;
         text-align: center;
         border-radius: 12px;
-        
+        font-size: 18px;
+        font-weight: 600;
         
       }
-
         input {
           padding: 10px;
           border: 1px solid lightgray;
+          
         }
 
         .editorContainer {
-          height: 300px;
-          overflow: scroll;
+          height: 200px;
+          // overflow: scroll;
           border: 1px solid lightgray;
+          color: black;
+          // padding-bottom: 40px;
 
           .editor {
-            height: 100%;
+            height: 80%;
             border: none;
           }
+        }
+
+        .publish{
+          font-size: 18px;
+          font-weight: 600;
         }
       }
 
       .menu {
-        flex: 2;
+        flex: 4;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -740,23 +728,33 @@ $lightGreen: #9aecec;
               padding: 3px 5px;
             }
           }
-
-          .cat{
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            color: teal;
-          }
         }
       }
     }
     .view_post_button{
-      padding-left: 30px;
+      // padding-left: 30px;
+      text-align: center;
+      cursor: pointer;
     }
     .view_my_posts{
-      padding-left: 30px;
-      padding-right: 30px;
+      // padding-left: 30px;
+      // padding-right: 30px;
+      color: black;
     }
+
+    .view_post_content{
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 0px 0px, rgba(0, 0, 0, 0.06) 0px 1px 0px 0px;
+      padding: 10px;
+      font-size: 16px;
+      text-transform: capitalize;
+    }
+
+    .view_post_tags{
+      font-size: 1px;
+      // margin-left: %;
+      text-align: right;
+    }
+
 
     // Search
     .searchedPost{
@@ -792,6 +790,8 @@ $lightGreen: #9aecec;
       border-radius: 10px;
       cursor: pointer;
     }
+
+
   
   }
 }
