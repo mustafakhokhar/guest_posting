@@ -15,6 +15,7 @@ import Admin from "./pages/admin";
 import Search from "./pages/search";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Users from "./pages/user";
 
 import "./style.scss"
 
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: <Search />,
+  },
+  {
+    path: "/user",
+    element: <Users />,
   },
 ]);
 
