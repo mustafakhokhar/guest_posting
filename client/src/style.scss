@@ -2,8 +2,10 @@ $lightGreen: #9aecec;
 
 .app {
   // display: flex;
-  background-color: #393E46;
+  // background-color: #393E46;
+  background-color: #EEEEEE;
   justify-content: center;
+  color: #EEEEEE;
   .container {
     width: flex;
 
@@ -147,10 +149,13 @@ $lightGreen: #9aecec;
     .navbar {
       h1{
         padding-left: 50px;
-        font-family: cursive
+        font-family: cursive;
+        color: #EEEEEE;
+        // letter-spacing: 0.1px;
       }
       .container {
-        background-color: #EEEEEE;
+        // background-color: #EEEEEE;
+        background-color: rgb(20, 23, 39);
         padding: 10px 0px;
         display: flex;
         align-items: center;
@@ -159,6 +164,23 @@ $lightGreen: #9aecec;
           img {
             width: 120px;
           }
+        }
+        .hello{
+          font-size: 20px;
+        }
+
+        .username{
+          align-items: center;
+          font-size: 20px;
+          text-transform: capitalize;
+          text-decoration-line: underline;
+        }
+
+        .adminRedirectioncss{
+          font-size: 20px;
+          text-transform: capitalize;
+          font-family: Georgia;
+          cursor: pointer;
         }
         
         .links {
@@ -171,14 +193,14 @@ $lightGreen: #9aecec;
             font-weight: 300;
           }
 
-          span {
+
+          .logout{
+            font-size: 16px;
             cursor: pointer;
+            text-transform: uppercase;
           }
 
-          .username{
-            font-size: 20px;
-            text-transform: capitalize;
-          }
+          
 
           .write-button {
             background-color: gray;
@@ -225,20 +247,25 @@ $lightGreen: #9aecec;
      
 
       .posts {
-        padding-left: 7.5%;
+        padding-left: 10%;
+        padding-right: 10%;
         justify-content: left;
         // align-items: center;
         margin-top: 50px;
         display: flex;
         flex-direction: column;
         gap: 30px;
-        // background-color: #474E68;
-        color :#faffff;
+        
         
 
         .post {
           display: flex;
           gap: 20px;
+          // border: solid;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          color: black;
+          background-color: #EEEEEE;
+
 
           &:nth-child(2n + 1) {
             flex-direction: row-reverse;
@@ -267,10 +294,12 @@ $lightGreen: #9aecec;
           }
 
           .content {
-            flex: 3;
+            
+            flex: 2;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            // background-color: rgb(45, 43, 47);
 
             h1 {
               font-size: 48px;
@@ -280,7 +309,24 @@ $lightGreen: #9aecec;
               font-size: 18px;
             }
 
-          
+
+            .title{
+              font-size: 20px;
+              font-family: Helvetica;
+              // letter-spacing: 2px;
+            }
+
+            .content{
+              padding-left: 20px;
+              font-size: 20px;
+            }
+
+            .tag{
+              text-align: left;
+              padding-left: 20px;
+              font-size: 20px;
+            }
+
             button {
               width: max-content;
               padding: 10px 20px;
