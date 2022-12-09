@@ -1,10 +1,7 @@
 import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../context/authContext";
 
 
 const Search = () => {
@@ -22,29 +19,21 @@ const Search = () => {
     }
 
     const searchk = async() => {
-
         console.log("THE words are : ", search_word)
         try {
-
         const res = await axios.get(`/posts/searchk/${search_word}`);
         set_search_array(res.data)
         } catch (err){
-          
-        
           console.log(err)
         }
     }
 
     const searcht = async() => {
-
         console.log("THE tags are : ", search_tag)
         try {
-
         const res = await axios.get(`/posts/searcht/${search_tag}`);
         set_search_array(res.data)
         } catch (err){
-          
-        
           console.log(err)
         }
     }
@@ -77,30 +66,36 @@ const Search = () => {
 
       
     return (
-        <div>   
+        <div className="home container-bg">   
             <div className="search">
-                <h1>HELLO BITCHES You are on the search page</h1>
-                
+                <h1>Search</h1>
+                <div>
                 <input onChange={(e) => set_vals(e.target.value)}></input>
-                <button onClick = {() => searchk()}> Search keyword</button>
-                <button onClick = {() => searcht()}> Search tag</button>
-                <button onClick = {() => likes()}> sort by likes</button>
-                <button onClick = {() => dislikes()}> sort by dislikes</button>
-                <button onClick = {() => engagement()}> sort by engagement</button>
+                <button className="s1" onClick = {() => searchk()}> Search keyword</button>
+                <button className="s1" onClick = {() => searcht()}> Search tag</button>
+                </div>
+                <button className="s2" onClick = {() => likes()}> sort by likes</button>
+                <button className="s2" onClick = {() => dislikes()}> sort by dislikes</button>
+                <button className="s2" onClick = {() => engagement()}> sort by engagement</button>
             </div>
             <div>
+            <div className="posts">
                 {search_array.map((result) => ( 
-                <div>
+                <div className="post">
                     <div className="content">
-                        <br/>
-                        <p> <strong>Writer:{result.writer_id}</strong> <br/> tags: {result.tag1} {result.tag2} {result.tag3}, <br/> content: {getText(result.post_content)}
-                            <br/> Likes: {result.totalLikes} <br/> Dislikes: {result.totalDislikes} <br/> Total comments: {result.totalComments}
-                        </p>
-                        <br/>
+                        <Link className="link" to={`/post/${result.post_id}`}>
+                            <h2 className="title">{result.writer_id} </h2>
+                            <p className="content">{getText(result.post_content)}</p>
+                            <div>
+                                <p>👍{result.totalLikes} 👎{result.totalDislikes} 💭{result.totalComments}</p>
+                                <p className="tag">{result.tag2} {result.tag3}</p>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             ))}
             </div>
+        </div>
         </div> 
     );
 

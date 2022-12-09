@@ -9,7 +9,7 @@ export const getPosts = (req, res) => {
   // const q = req.query.cat
     // ? "SELECT * FROM posts WHERE cat=?"
     // : "SELECT * FROM posts";
-  const q =  "Select * from posts";
+  const q =  "SELECT * FROM  posts WHERE admin_approval_status > 0 and writer_id in (Select username from user_info where is_account_ban = 0);";
     // console.log("yesssssdsdsds\n")
   db.query(q, (err, data) => {
     if (err) return res.status(500).send(err);

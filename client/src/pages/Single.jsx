@@ -135,9 +135,9 @@ const Single = () => {
           <button className = "button" onClick = {() => Like(post)}> 👍UpVote : {post.totalLikes}</button>
           <button className = "button" onClick = {() => Dis_Like(post)}>👎DownVote : {post.totalDislikes}</button>
           <button className = "button" onClick = {() => report_handler(post)}> 🚩Reports:{post.reportCount}<strong>{report_status}</strong> </button>
+          <button className = "button" onClick={() => handleDelete(post)}>Delete</button>
           </div>
           {Comments(postId)}
-          <button className = "button" onClick={() => handleDelete(post)}>Delete</button>
         </div>
     </div>
   );
