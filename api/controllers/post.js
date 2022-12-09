@@ -97,11 +97,7 @@ export const addPost = (req, res) => {
     ];
 
     db.query(q, [values], (err, data) => {
-<<<<<<< Updated upstream
-      if (err) return res.status(550).json(err);
-=======
       if (err) return res.status(600).json(err);
->>>>>>> Stashed changes
       return res.json("Post has been created.");
     });
   });

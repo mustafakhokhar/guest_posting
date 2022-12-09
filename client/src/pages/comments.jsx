@@ -81,7 +81,7 @@ const Comments = (post_id) => {
             {comment_array.map((comment) => ( 
             <div>
                 <div className="comment" >
-                <div >
+                <div>
                     <p className="DisplayComment"> <strong>{comment.username} : </strong>  {getText(comment.comment_content)}</p>
                 </div>
                 </div>
