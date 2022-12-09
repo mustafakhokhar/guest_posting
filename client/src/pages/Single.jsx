@@ -94,12 +94,16 @@ const Single = () => {
   }
 
 
-
-  const handleDelete = async ()=>{
+  const deletepostid= postId
+  const usersname= currentUser.username
+  const handleDelete = async (post)=>{
     try {
-      await axios.delete(`/posts/${postId}`);
+      const array= [deletepostid,usersname ]
+      console.log("This is the stuff deleting:", array)
+      await axios.post(`/posts/${postId}`,array);
       navigate("/")
     } catch (err) {
+      console.log("Throwing error")
       console.log(err);
     }
   }
@@ -133,6 +137,7 @@ const Single = () => {
           <button className = "button" onClick = {() => report_handler(post)}> 🚩Reports:{post.reportCount}<strong>{report_status}</strong> </button>
           </div>
           {Comments(postId)}
+          <button className = "button" onClick={() => handleDelete(post)}>Delete</button>
         </div>
     </div>
   );

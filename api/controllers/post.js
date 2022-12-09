@@ -97,11 +97,8 @@ export const addPost = (req, res) => {
     ];
 
     db.query(q, [values], (err, data) => {
-<<<<<<< Updated upstream
       if (err) return res.status(550).json(err);
-=======
       if (err) return res.status(600).json(err);
->>>>>>> Stashed changes
       return res.json("Post has been created.");
     });
   });
@@ -117,16 +114,22 @@ export const addPost = (req, res) => {
 
 
 export const deletePost = (req, res) => {
+  console.log("Inside deletePost")
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const postId = req.params.id;
-    const q = "DELETE FROM posts WHERE `id` = ? AND `uid` = ?";
-
-    db.query(q, [postId, userInfo.id], (err, data) => {
+    const postId = req.body[0] ;
+    const userid = req.body[1] ;
+    const q = "DELETE FROM posts WHERE `post_id` = ? AND `writer_id` = ?";
+    
+    console.log(req.body," this is the data")
+    console.log(req.body[0])
+    console.log(req.body[1])
+    console.log("displayed above")
+    db.query(q, [postId, userid], (err, data) => {
       if (err) return res.status(403).json("You can delete only your post!");
 
       return res.json("Post has been deleted!");
