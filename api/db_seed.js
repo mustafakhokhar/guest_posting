@@ -81,7 +81,7 @@ connectionString.connect( (error)=>
             else
             {
 
-                connectionString.query("USE Guest_hosting_site_new;",(err , result) =>{
+                connectionString.query("USE Guest_hosting_site;",(err , result) =>{
                     console.log("error occured in using your databases!")
                 })
 

@@ -7,7 +7,6 @@ function unixTimestamp (date = Date.now()) {
   return Math.floor(date / 1000)
 }
 
-var i= 0
 
 
 export const getPosts = (req, res) => {
@@ -40,7 +39,34 @@ export const getPost = (req, res) => {
 };
 
 
+export const addPoll = (req, res) => {
+  console.log("Inside addPoll")
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not authenticated!");
 
+  jwt.verify(token, "jwtkey", (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    const q = "INSERT INTO guest_hosting_site.polls(`writer_id`,`title`,`option1`,`option2`,`option3`,`vote1`,`vote2`,`vote3`) VALUES (?)";
+
+
+    const values = [
+      req.body.usersname,
+      req.body.title,
+      req.body.option1,
+      req.body.option2,
+      req.body.option3,
+      0,
+      0,
+      0
+    ];
+
+    db.query(q, [values], (err, data) => {
+      if (err) return res.status(550).json(err);
+      return res.json("Poll has been created.");
+    });
+  });
+}
 
 
 
@@ -54,11 +80,10 @@ export const addPost = (req, res) => {
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const q = "INSERT INTO guest_hosting_site_new.posts(`post_id`,`writer_id`,`post_content`,`admin_approval_status`,`tag1`,`tag2`,`tag3`,`totalLikes`,`totalDislikes`,`reportCount`,`totalComments`) VALUES (?)";
+    const q = "INSERT INTO guest_hosting_site.posts(`writer_id`,`post_content`,`admin_approval_status`,`tag1`,`tag2`,`tag3`,`totalLikes`,`totalDislikes`,`reportCount`,`totalComments`) VALUES (?)";
 
 
     const values = [
-      i++,
       req.body.usersname,
       req.body.desc,
       0,
@@ -483,11 +508,24 @@ export const get_comments = (req , res) =>{
     else {return res.status(200).json(data)};
   });
 
-
-
 //   db.query(q, (err, data) => {
 //   if (err) return res.status(500).send(err);
 //   return res.status(200).json(data);
 
 // })} 
+}
+
+
+export const view_my_posts = (req , res) =>{
+
+  // const q =  "Select * from posts";
+  console.log("yesss!!!!sss", req.params.id)
+
+  const comment_query = `Select * from posts where writer_id = '${req.params.id}'`
+  // console.log("POST ID : ", req.params.id)
+  db.query(comment_query, (err, data) => {
+    if (err){console.log(err)}
+    // console.log(data)
+    else {return res.status(200).json(data)};
+  });
 }

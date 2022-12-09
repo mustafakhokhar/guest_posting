@@ -96,6 +96,11 @@ const Navbar = () => {
               Write
             </Link>
           </span>
+          {/* <span className="write-button">
+            <Link className="link" to="/polls">
+              POLL
+            </Link>
+          </span> */}
         </div>
       </div>
     </div>
