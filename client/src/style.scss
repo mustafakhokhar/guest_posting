@@ -389,6 +389,7 @@ $lightGreen: #9aecec;
 
 .app {
   // display: flex;
+  background-color: #393E46;
   justify-content: center;
   .container {
     width: flex;
@@ -535,6 +536,7 @@ $lightGreen: #9aecec;
     //NAVBAR
     .navbar {
       .container {
+        background-color: #EEEEEE;
         padding: 10px 0px;
         display: flex;
         align-items: center;
@@ -596,12 +598,24 @@ $lightGreen: #9aecec;
 
     //HOME
 
+    // .container-bg{
+    //   background-color: #474E68;
+    // }
+
     .home {
+     
+
       .posts {
+        padding-left: 7.5%;
+        justify-content: left;
+        // align-items: center;
         margin-top: 50px;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        // background-color: #474E68;
+        color :#faffff;
+        
 
         .post {
           display: flex;
@@ -693,6 +707,46 @@ $lightGreen: #9aecec;
     .single {
       display: flex;
       gap: 50px;
+      color : wheat;
+
+      .comment_button {
+
+        
+        background-color: rgb(222, 97, 25); /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+     
+      }
+      
+      .comment_input{
+        padding: 0;
+        height: 30px;
+        position: relative;
+        left: 0;
+        outline: none;
+        border: 1px solid #cdcdcd;
+        border-color: rgba(0, 0, 0, .15);
+        background-color: white;
+        font-size: 16px;
+        width: 400px;
+      }
+
+      .button {
+        background-color: orange; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+
 
       .content {
         flex: 5;
@@ -705,7 +759,24 @@ $lightGreen: #9aecec;
           height: 300px;
           object-fit: cover;
         }
+        .single_tag{
+          color : white;
+          margin: auto;
+        }
 
+        .post_button {
+
+          background-color: #D65A31; /* Green */
+          width : 20%;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+
+        }
         .user {
           display: flex;
           align-items: center;
@@ -771,6 +842,7 @@ $lightGreen: #9aecec;
           }
 
           button {
+            
             width: max-content;
             padding: 7.5px 15px;
             border: none;

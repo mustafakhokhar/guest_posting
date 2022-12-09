@@ -81,13 +81,13 @@ const Comments = (post_id) => {
                     <p> <strong>{comment.username} : </strong>  {getText(comment.comment_content)}</p>
                 </div>
                 </div>
-                <div className="comment_input">
-                </div>
+                {/* <div className="comment_input">
+                </div> */}
             </div>
         ))}
-        <div>hello</div>
-         <input  onChange={(e) => set_comment_msg(e.target.value)}></input>
-         <button onClick = {() => comment_adder()} > Submit </button>
+        <div>Leave a comment : </div>
+         <input className ="comment_input" onChange={(e) => set_comment_msg(e.target.value)}></input>
+         <button className = "comment_button" onClick = {() => comment_adder()} > Submit </button>
         </div>
         )
 
