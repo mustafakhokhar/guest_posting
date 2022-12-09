@@ -25,7 +25,7 @@ router.get("/searcht/:tag", getSearch);
 router.get("/searchk/:word", getSearchk);
 router.post("/", addPost);
 router.post("/addPoll", addPoll);
-router.delete("/:id", deletePost);
+router.post("/:id", deletePost);
 router.put("/:id", updatePost);
 router.post("/update_like",update_like);
 router.post("/update_dislike",update_dislike);
