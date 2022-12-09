@@ -241,6 +241,10 @@ export const add_comment = (req , res) => {
 
 
 export const get_comments = (req , res) =>{
+
+  // const q =  "Select * from posts";
+  // console.log("yesss!!!!sss", req.params.id)
+
   const comment_query = `Select * from comments where post_id = ${req.params.id} order by created_time asc`
   // console.log("POST ID : ", req.params.id)
   db.query(comment_query, (err, data) => {

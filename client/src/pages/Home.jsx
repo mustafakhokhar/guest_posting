@@ -77,6 +77,7 @@ const Home = () => {
 
 
   return (
+    
     <div className="home container-bg">
       <div className="posts">
         {posts.map((post) => ( 
