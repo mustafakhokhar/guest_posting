@@ -20,6 +20,11 @@ const Navbar = () => {
       navigate('/write');
     }
   };
+  const navigateToSearch = () => {
+    // 👇️ navigate to /Login
+    navigate('/search');
+  };
+  
   
   function isWriter(){
     if (currentUser?.status === 'writer'){
@@ -46,16 +51,14 @@ const Navbar = () => {
         <span className="username" >{currentUser?.username}</span>
         </div>
         <div className="links">
+        <span className="adminRedirectioncss" onClick={navigateToSearch}>🔎Search</span>
+        <div>
+        </div>
         <span className="adminRedirectioncss" onClick={isAdmin()? navigateToAdmin:navigateToWrite}>{currentUser?.status}</span>
           {currentUser ? 
           (<span className="logout" onClick={logout}>Logout</span>):
           (navigateTologin())
           }
-          {/* <span className="write-button">
-            <Link className="link" to="/write">
-              Write
-            </Link>
-          </span> */}
         </div>
       </div>
     </div>
