@@ -1,13 +1,9 @@
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
 
-
-
 function unixTimestamp (date = Date.now()) {  
   return Math.floor(date / 1000)
 }
-
-
 
 export const getPosts = (req, res) => {
   // const q = req.query.cat
