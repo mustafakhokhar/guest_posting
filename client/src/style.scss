@@ -151,6 +151,7 @@ $lightGreen: #9aecec;
         padding-left: 50px;
         font-family: cursive;
         color: #EEEEEE;
+        cursor: pointer;
         // letter-spacing: 0.1px;
       }
       .container {
@@ -226,7 +227,6 @@ $lightGreen: #9aecec;
     }
 
     //FOOTER
-
     footer {
       margin-top: 100px;
       padding: 20px;
@@ -238,6 +238,25 @@ $lightGreen: #9aecec;
       img {
         height: 50px;
       }
+    }
+
+    .banUser{
+      margin-top: 10px;
+      text-align: center;
+      font-size: 25px;
+      margin-left: 85%;
+      margin-right: 1%;
+      border: solid rgb(20, 23, 39);;
+      border-radius: 10px;
+    }
+    
+    .unappPost{
+      color: black;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 25px;
+      margin-right: 1%;
+
     }
 
     .home {
@@ -257,6 +276,10 @@ $lightGreen: #9aecec;
         display: flex;
         flex-direction: column;
         gap: 30px;
+
+        .headingAdmin{
+          color: black;
+        }
         
         .post {
           display: flex;
@@ -329,6 +352,15 @@ $lightGreen: #9aecec;
               
             }
 
+            .adminatagu{
+              flex-direction: row;
+            }
+
+            .approv{
+              font-size: 14px;
+              padding-left: 10px;
+            }
+
             .tag{
               padding-top: 10px;
               text-align: right;
@@ -379,7 +411,6 @@ $lightGreen: #9aecec;
     }
 
     //SINGLE
-
     .single {
       padding: 50px;
       background-color: #cdcccc;
@@ -479,6 +510,8 @@ $lightGreen: #9aecec;
           font-weight:490;
           text-transform: uppercase;
         }
+
+        
 
         p{
           font-size: 30px;
@@ -592,7 +625,6 @@ $lightGreen: #9aecec;
     }
 
     //WRITE
-
     .add {
       margin-top: 20px;
       padding-left: 30px;
@@ -609,6 +641,8 @@ $lightGreen: #9aecec;
         span {
           cursor: pointer;
         }
+      
+      
 
       .pollbutton {
         // button {
@@ -722,6 +756,41 @@ $lightGreen: #9aecec;
     .view_my_posts{
       padding-left: 30px;
       padding-right: 30px;
+    }
+
+    // Search
+    .searchedPost{
+      color: black;
+      padding: 40px;
+    }
+
+    .searchcontent{
+      display: flex;
+      // gap: 40px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding: 20px;
+      border-radius: 10px;
+      color: black;
+      background-color: #EEEEEE;
+      text-transform: capitalize;
+
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+    }
+
+    .userN{
+      font-size: 20px;
+    }
+
+    .userD{
+      font-size: 18px;
+    }
+
+    .banUserBut{
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
     }
   
   }
