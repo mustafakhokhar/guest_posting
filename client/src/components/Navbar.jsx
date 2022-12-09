@@ -26,13 +26,13 @@ const Navbar = () => {
     <div className="navbar">
       <div className="container">
         <div className="logo">
-          <p>OUR GUEST POSTING</p>
+          <h1>F-Society</h1>
         </div>
         <div className="adminRedirectioncss">
         <span onClick={isAdmin()? navigateToAdmin:undefined}>{currentUser?.status}</span>
         </div>
         <div className="links">
-          <span>{currentUser?.username}</span>
+          <span className="username" >Hello 👋{currentUser?.username}</span>
           {currentUser ? 
           (<span onClick={logout}>Logout</span>):
           (navigateTologin())

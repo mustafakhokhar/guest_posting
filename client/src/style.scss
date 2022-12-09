@@ -145,6 +145,10 @@ $lightGreen: #9aecec;
 
     //NAVBAR
     .navbar {
+      h1{
+        padding-left: 50px;
+        font-family: cursive
+      }
       .container {
         background-color: #EEEEEE;
         padding: 10px 0px;
@@ -156,6 +160,7 @@ $lightGreen: #9aecec;
             width: 120px;
           }
         }
+        
         .links {
           display: flex;
           align-items: center;
@@ -168,6 +173,11 @@ $lightGreen: #9aecec;
 
           span {
             cursor: pointer;
+          }
+
+          .username{
+            font-size: 20px;
+            text-transform: capitalize;
           }
 
           .write-button {
