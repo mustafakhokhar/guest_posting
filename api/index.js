@@ -5,14 +5,17 @@ import postRoutes from "./routes/posts.js";
 import postsApprovalRoutes from "./routes/postsApproval.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
+import {fileURLToPath} from 'url';
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-
 const path = require('path');
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
-app.use(express.static(path.join(path.dirname + "public")));
+app.use(express.static(path.join(__dirname + "/public")));
 const PORT = process.env.PORT || 8800;
 
 app.use(express.json());
