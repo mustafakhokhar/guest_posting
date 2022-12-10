@@ -33,7 +33,7 @@ export const updateApprovalStatus = (req ,res) =>{
 
 
 export const get_users = (req, res) => {
-  const q =  `Select * from user_info where status != 'admin' and is_account_ban=0 ORDER BY total_reports DESC`;
+  const q =  `Select * from user_info where status = 'writer' and is_account_ban=0 ORDER BY total_reports DESC`;
   db.query(q, (err, data) => {
     if (err) return res.status(500).send(err);
     // console.log(data)

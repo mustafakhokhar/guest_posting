@@ -112,24 +112,35 @@ export const deletePost = (req, res) => {
   console.log("Inside deletePost")
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
+  else
+    jwt.verify(token, "jwtkey", (err, userInfo) => {
+      if (err) return res.status(403).json("Token is not valid!");
+      else{
 
-  jwt.verify(token, "jwtkey", (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
+        const postId = req.body[0] ;
+        const userid = req.body[1] ;
+        const query1 = "DELETE FROM user_has_liked WHERE  `post_id` = ? AND `username` = ?";
+        const query2 = "DELETE FROM user_has_reported WHERE  `post_id` = ? AND `username` = ?";
+        const q = "DELETE FROM posts WHERE `post_id` = ? AND `writer_id` = ?";
+        
+        console.log(req.body," this is the data")
+        console.log(req.body[0])
+        console.log(req.body[1])
+        console.log("displayed above")
+        db.query(query1, [postId, userid], (err, data) => {
+          if (err) return res.status(403).json("You can delete only your post!");
+          else  db.query(query2, [postId, userid], (err, data) => {
+              if (err) return res.status(404).json("You can delete only your post!");
+              else 
+              db.query(q, [postId, userid], (err, data) => {
+                if (err) return res.status(405).json("You can delete only your post!");
+                else  return res.json("Post has been deleted!");
+              });
+            });
 
-    const postId = req.body[0] ;
-    const userid = req.body[1] ;
-    const q = "DELETE FROM posts WHERE `post_id` = ? AND `writer_id` = ?";
-    
-    console.log(req.body," this is the data")
-    console.log(req.body[0])
-    console.log(req.body[1])
-    console.log("displayed above")
-    db.query(q, [postId, userid], (err, data) => {
-      if (err) return res.status(403).json("You can delete only your post!");
-
-      return res.json("Post has been deleted!");
+        });
+    }
     });
-  });
 };
 
 export const updatePost = (req, res) => {

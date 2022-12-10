@@ -20,15 +20,18 @@ const Search = () => {
 
     const searchk = async() => {
         console.log("THE words are : ", search_word)
-        try {
-        const res = await axios.get(`/posts/searchk/${search_word}`);
-        set_search_array(res.data)
-        } catch (err){
-          console.log(err)
+        if (search_word.length != 0){
+            try {
+            const res = await axios.get(`/posts/searchk/${search_word}`);
+            set_search_array(res.data)
+            } catch (err){
+            console.log(err)
+            }
         }
     }
 
     const searcht = async() => {
+        if (search_tag.length != 0){
         console.log("THE tags are : ", search_tag)
         try {
         const res = await axios.get(`/posts/searcht/${search_tag}`);
@@ -37,6 +40,7 @@ const Search = () => {
           console.log(err)
         }
     }
+    }
 
     const set_vals = (e) => {
         set_search_t(e);
@@ -44,24 +48,31 @@ const Search = () => {
     }
 
     const likes = async() => {
+        if (search_tag.length != 0){
         const res = await axios.get(`/posts/searcht/${search_tag}`);
         set_search_array(res)
         const sorted = [...search_array].sort((a,b) => b.totalLikes - a.totalLikes)
         set_search_array(sorted)
+        }
     }
 
     const dislikes = async() => {
+        if (search_tag.length != 0){
         const res = await axios.get(`/posts/searcht/${search_tag}`);
         set_search_array(res)
         const sorted = [...search_array].sort((a,b) => b.totalDislikes - a.totalDislikes)
         set_search_array(sorted)
+        }
     }
 
+
     const engagement = async() => {
+        if (search_tag.length != 0){
         const res = await axios.get(`/posts/searcht/${search_tag}`);
         set_search_array(res)
         const sorted = [...search_array].sort((a,b) => b.totalComments - a.totalComments)
         set_search_array(sorted)
+        }
     }
 
       
@@ -70,7 +81,7 @@ const Search = () => {
             <div className="search">
                 <h1>Search</h1>
                 <div>
-                <input onChange={(e) => set_vals(e.target.value)}></input>
+                <input className="SearchInput" onChange={(e) => set_vals(e.target.value)}></input>
                 <button className="s1" onClick = {() => searchk()}> Search keyword</button>
                 <button className="s1" onClick = {() => searcht()}> Search tag</button>
                 </div>
