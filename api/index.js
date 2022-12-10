@@ -5,9 +5,10 @@ import postRoutes from "./routes/posts.js";
 import postsApprovalRoutes from "./routes/postsApproval.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
+import path from "path"
 
 const app = express();
-
+// app.use(express.static(path.join(__dirname+"/public")))
 app.use(express.json());
 app.use(cookieParser());
 const storage = multer.diskStorage({
@@ -31,6 +32,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/postsApproval", postsApprovalRoutes);
 
-app.listen(8800, () => {
+const PORT = process.env.PORT || 8800
+
+app.listen(PORT, () => {
   console.log("Connected!");
 });
