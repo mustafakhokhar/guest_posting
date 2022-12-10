@@ -33,14 +33,14 @@ const Login = () => {
     <div className="login">
       <h1>Login</h1>
       <form>
-        <input
+        <input className="inpLogin"
           required
           type="text"
           placeholder="username"
           name="username"
           onChange={handleChange}
         />
-        <input
+        <input className="inpLogin"
           required
           type="password"
           placeholder="password"

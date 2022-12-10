@@ -55,7 +55,7 @@ const Navbar = () => {
         <span className="username" >{currentUser?.username}</span>
         </div>
         <div className="links">
-        <span className="adminRedirectioncss" onClick={navigateToSearch}>🔎Search</span>
+        <span className="adminRedirectioncss" onClick={navigateToSearch}>🔍Search</span>
         <div>
         </div>
         <span className="adminRedirectioncss" onClick={isAdmin()? navigateToAdmin:navigateToWrite}>{currentUser?.status}</span>

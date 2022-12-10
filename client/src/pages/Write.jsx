@@ -69,17 +69,17 @@ const Write = () => {
             onChange={setValue}
           />
         </div>
-        <input
+        <input className="writeInput"
           type="text"
           placeholder="Tag1"
           onChange={(e) => setTag1(e.target.value)}
         />
-         <input
+         <input className="writeInput"
           type="text"
           placeholder="Tag2"
           onChange={(e) => setTag2(e.target.value)}
         />
-         <input
+         <input className="writeInput"
           type="text"
           placeholder="Tag3"
           onChange={(e) => setTag3(e.target.value)}

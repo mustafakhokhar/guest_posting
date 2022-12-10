@@ -36,12 +36,12 @@ const Register = () => {
 
   return (
     <div className="register">
-      <form>
+      <form className="registerForm">
         <h1 className= "heading">F-Society</h1>
         <h3>Sign up to share knowledge with your friends.</h3>
         <div>
-        <label>Username</label>
-        <input
+        <label className="regsiterLabel">Username</label>
+        <input className="inputRegister"
           type="text"
           placeholder="e.g hellcat007"
           name="username"
@@ -52,7 +52,7 @@ const Register = () => {
 
         <div>
         <label>Name of birth place.</label>
-        <input
+        <input className="inputRegister"
           type="text"
           placeholder="Question 1"
           name="question_1"
@@ -63,7 +63,7 @@ const Register = () => {
 
         <div>
         <label>Full Name</label>
-        <input
+        <input className="inputRegister"
           required
           type="text"
           placeholder="e.g Elon Musk"
@@ -74,7 +74,7 @@ const Register = () => {
 
         <div>
         <label>Place where your parents met.</label>
-        <input
+        <input className="inputRegister"
           required
           type="text"
           placeholder="Question 2"
@@ -85,7 +85,7 @@ const Register = () => {
 
         <div>
         <label>Password</label>
-        <input
+        <input className="inputRegister"
           required
           type="password"
           placeholder="e.g PDC5"
@@ -96,7 +96,7 @@ const Register = () => {
 
         <div>
         <label>Name of your best friend.</label>
-        <input
+        <input className="inputRegister"
           required
           type="text"
           placeholder="Question 3"
@@ -110,12 +110,12 @@ const Register = () => {
 
         <div></div>
         <label name= "user_type">Reader </label>
-        <input name='state' type='radio' value='reader' onChange={handleChange}/>
-        <label name= "user_type">Writer</label>
+        <input className="inputRegister" name='state' type='radio' value='reader' onChange={handleChange}/>
+        <label className="inputRegister" name= "user_type">Writer</label>
         <input name='state' type='radio' value='writer' onChange={handleChange}/>
         
-        <button onClick={handleSubmit}>Register</button>
-        <p>{err}</p>
+        <button className="registerButton" onClick={handleSubmit}>Register</button>
+        <p className="registerPara">{err}</p>
         <span>
           Already have an account? <Link to="/login">Login</Link>
         </span>
