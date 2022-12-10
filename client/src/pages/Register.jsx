@@ -16,6 +16,7 @@ const Register = () => {
 
   console.log(inputs)
   const [err, setError] = useState(null);
+  // const [flag , setflag] = useState(true);
 
   const navigate = useNavigate();
 
@@ -26,6 +27,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
       await axios.post("/auth/register", inputs);
       navigate("/login");
     } catch (err) {
@@ -46,7 +48,7 @@ const Register = () => {
           placeholder="e.g hellcat007"
           name="username"
           onChange={handleChange}
-          required
+          required = {true}
         />
         </div>
 
@@ -56,15 +58,15 @@ const Register = () => {
           type="text"
           placeholder="Question 1"
           name="question_1"
+          required = {true}
           onChange={handleChange}
-          required
         />
         </div>
 
         <div>
         <label>Full Name</label>
         <input className="inputRegister"
-          required
+          required="required"
           type="text"
           placeholder="e.g Elon Musk"
           name="name"
@@ -75,7 +77,7 @@ const Register = () => {
         <div>
         <label>Place where your parents met.</label>
         <input className="inputRegister"
-          required
+          required = {true}
           type="text"
           placeholder="Question 2"
           name="question_2"
@@ -86,7 +88,7 @@ const Register = () => {
         <div>
         <label>Password</label>
         <input className="inputRegister"
-          required
+          required = {true}
           type="password"
           placeholder="e.g PDC5"
           name="password"
@@ -97,7 +99,7 @@ const Register = () => {
         <div>
         <label>Name of your best friend.</label>
         <input className="inputRegister"
-          required
+          required="required"
           type="text"
           placeholder="Question 3"
           name="question_3"
