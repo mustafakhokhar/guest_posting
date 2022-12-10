@@ -31,6 +31,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/postsApproval", postsApprovalRoutes);
 
-app.listen(8800, () => {
+app.listen($PORT||8080, () => {
   console.log("Connected!");
 });
