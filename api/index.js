@@ -6,7 +6,14 @@ import postsApprovalRoutes from "./routes/postsApproval.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
+const path = require('path');
+
 const app = express();
+app.use(express.static(path.join(path.dirname + "public")));
+const PORT = process.env.PORT || 8800;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -31,6 +38,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/postsApproval", postsApprovalRoutes);
 
-app.listen(8800, () => {
+app.listen(PORT, () => {
   console.log("Connected!");
 });
