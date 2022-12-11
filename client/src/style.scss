@@ -709,6 +709,9 @@ $lightGreen: #9aecec;
           h1{
             font-size: 20px;
           }
+          h3{
+            font-size: 10px;
+          }
 
           .file{
             text-decoration: underline;
@@ -763,6 +766,11 @@ $lightGreen: #9aecec;
       font-size: 1px;
       // margin-left: %;
       text-align: right;
+    }
+    .view_post_approved{
+      font-size: 0.5px;
+      text-align: right;
+
     }
 
     .search{

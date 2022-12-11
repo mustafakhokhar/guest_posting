@@ -102,6 +102,18 @@ const Write = () => {
                       __html: DOMPurify.sanitize(post.post_content),
                     }}
                   ></p>
+                  {/* {<h1 className="view_post_tags">{post.admin_approval_status}</h1> } */}
+                  
+                  <h3 className="view_post_approved" >
+                    {(() => {
+                      switch (post.admin_approval_status) {
+                        case 1:   return "APPROVED";
+                        case 0: return "UNAPPROVED";
+                      }
+                    })()}
+                    </h3>
+                  
+                    {/* {<h1>hello people</h1>} */}
                   {/* <h1 className="view_post_tags">{post.tag1} {post.tag2} {post.tag3}</h1> */}
               </div>
               ))}
