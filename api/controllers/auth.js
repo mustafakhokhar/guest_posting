@@ -25,7 +25,7 @@ export const register = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
 
-    const q = "INSERT INTO guest_hosting_site.user_info(`username`,`full_name`, `password`,`security_1`, `security_2`, `security_3`,`status` , `total_reports` ,`is_account_ban`) VALUES (?)";
+    const q = "INSERT INTO user_info(`username`,`full_name`, `password`,`security_1`, `security_2`, `security_3`,`status` , `total_reports` ,`is_account_ban`) VALUES (?)";
     const values = [req.body.username, req.body.name, req.body.password , req.body.question_1 , req.body.question_2 , req.body.question_3 ,req.body.state, 0 , false ];
 
     db.query(q, [values], (err, data) => {

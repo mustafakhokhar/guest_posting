@@ -43,7 +43,7 @@ export const addPoll = (req, res) => {
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const q = "INSERT INTO guest_hosting_site.polls(`writer_id`,`title`,`option1`,`option2`,`option3`,`vote1`,`vote2`,`vote3`) VALUES (?)";
+    const q = "INSERT INTO polls(`writer_id`,`title`,`option1`,`option2`,`option3`,`vote1`,`vote2`,`vote3`) VALUES (?)";
 
 
     const values = [
@@ -76,7 +76,7 @@ export const addPost = (req, res) => {
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const q = "INSERT INTO guest_hosting_site.posts(`writer_id`,`post_content`,`admin_approval_status`,`tag1`,`tag2`,`tag3`,`totalLikes`,`totalDislikes`,`reportCount`,`totalComments`) VALUES (?)";
+    const q = "INSERT INTO posts(`writer_id`,`post_content`,`admin_approval_status`,`tag1`,`tag2`,`tag3`,`totalLikes`,`totalDislikes`,`reportCount`,`totalComments`) VALUES (?)";
 
 
     const values = [
