@@ -48,7 +48,47 @@ This will launch the web application
 The page will reload when you make changes.
 
 Deployment:
+Used: Heroku with ClearDB addon.
 * Web app works on local host, it will not work if directly deployed on heroku. Few chnages are needed for deployment.
+
+1) Changes in Client Side:
+- In client/package.json
+  - Remove very last line ```"proxy": "http://localhost:8800/api/"```
+- Create New file in client/src/config.js
+```
+import axios from "axios"
+export const axiosInstance = axios.create({
+    baseURL : "https://your-herukoapp-name.herokuapp.com/api/"
+})
+```
+- Review everyfile in subfolders of client and replace axios with axiosInstnace imported from client/src/config.js
+
+TADA Your Client Side is ready
+
+- In Terminal, go to client folder ands run:
+```
+npm run build
+```
+This will create a "build" folder under client which has Build version of client side which will be deployed on Heroku.
+
+- Copy all content of client/build folder and paste them into api/public, if api/public doesn't exist, create one
+ 
+
+2) Heroku Setup:
+- In Terminal go to api folder
+- login to Heroku by entering Email and Password
+```
+heroku login -i
+```
+- Create Heroku app
+```
+heroku create your-herokuapp-name
+git init
+git add .
+git commit -m "First-commit"
+git push heroku master
+```
+** Congratulations Your App is now deployed (without a Database)
 
 1) Changes in api/index.js 
 - "require" is not directly supported on latest expressJs. So to use "require" function
@@ -66,15 +106,13 @@ const PORT = process.env.PORT || 8800;
 ```
 - lastly update
 ```javascript
-app.listen(8800, () => {
-  console.log("Connected!");
-});
-```
-To
-```javascript
 app.listen(PORT, () => {
   console.log("Connected!");
 });
+```
+
+2) Changes in api/db.js
+-
 
 
 
