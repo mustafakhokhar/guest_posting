@@ -51,7 +51,7 @@ The page will reload when you make changes.
 Used: Heroku with ClearDB addon.
 * Web app works on local host, it will not work if directly deployed on heroku. Few chnages are needed for deployment.
 
-### 1) Changes in Client Side:
+### 1) **Changes in Client Side:**
 - In client/package.json
   - Remove very last line ```"proxy": "http://localhost:8800/api/"```
 - Create New file in client/src/config.js
@@ -74,7 +74,7 @@ This will create a "build" folder under client which has Build version of client
 - Copy all content of client/build folder and paste them into api/public, if api/public doesn't exist, create one
  
 
-2) **Heroku Setup:**
+### 2) **Heroku Setup:**
 - In Terminal go to api folder
 - login to Heroku by entering Email and Password
 ```
@@ -90,7 +90,7 @@ git push heroku master
 ```
 ** Congratulations Your App is now deployed (without a Database)
 
-3) **Setup ClearDB (MySQL addon)**
+### 3) **Setup ClearDB (MySQL addon)**
 ```
 heroku addons:create cleardb:ignite
 ```
@@ -115,7 +115,7 @@ export const db = mysql.createPool('mysql://b7e2437887xxxa:0200xxx6@us-cdbr-iron
 ```
 DATABASE CONNECTED???!?
 
-4) **Changes in api/index.js **
+### 4) **Changes in api/index.js **
 - "require" is not directly supported on latest expressJs. So to use "require" function, Add this code
  ```javascript
 import { createRequire } from 'module';
@@ -136,7 +136,7 @@ app.listen(PORT, () => {
 });
 ```
 
-5) **ENJOY**
+### 5) **ENJOY**
 - commit all of these updates
 ```
 git add .
@@ -144,7 +144,7 @@ git commit -m "last-commit"
 git push heroku master
 ```
 
-6) **Create MySQL table on ClearDB**
+### 6) **Create MySQL table on ClearDB**
 - Before testing our app on Heroku, we need to create MySQL table named customers on ClearDB.
 ```
 mysql --host=us-cdbr-iron-east-02.cleardb.net --user=b7e2437887xxxa --password=0200xxx6 --reconnect heroku_7643ec736354xxx
