@@ -1,6 +1,6 @@
-Guest Posting Site - Reactjs Expressjz SAAS MySql
+# Guest Posting Site - Reactjs Expressjz SAAS MySql
 
-Live Preview: https://fsociety.herokuapp.com
+###### Live Preview: https://fsociety.herokuapp.com
 
 Technologies used:
 - Reactjs
@@ -31,15 +31,15 @@ MySQL Database:
   - userHasLiked (username, isLiked, postID)
   - userHasReported (username, postID)
 
-To Run the Project:
+## To Run the Project on localhost:
 - Make Sure .env has correct hostname, password and other credentials AND Database has relevant tables/data.
-1) Git clone repository
-2) In Code Editor Terminal
+1) **Git clone repository**
+2) **In Code Editor Terminal**
    - Open "API" folder
    - Run "npm i"
    - Run "node index.js"
 This will Start Backend Server
-3) In another Code Editor Terminal
+3) **In another Code Editor Terminal**
    - Open "CLIENT" folder
    - Run "npm i"
    - Run "npm start"
@@ -47,11 +47,11 @@ This will launch the web application
 
 The page will reload when you make changes.
 
-Deployment:
+## Deployment:
 Used: Heroku with ClearDB addon.
 * Web app works on local host, it will not work if directly deployed on heroku. Few chnages are needed for deployment.
 
-1) Changes in Client Side:
+1) **Changes in Client Side:**
 - In client/package.json
   - Remove very last line ```"proxy": "http://localhost:8800/api/"```
 - Create New file in client/src/config.js
@@ -74,7 +74,7 @@ This will create a "build" folder under client which has Build version of client
 - Copy all content of client/build folder and paste them into api/public, if api/public doesn't exist, create one
  
 
-2) Heroku Setup:
+2) **Heroku Setup:**
 - In Terminal go to api folder
 - login to Heroku by entering Email and Password
 ```
@@ -90,7 +90,7 @@ git push heroku master
 ```
 ** Congratulations Your App is now deployed (without a Database)
 
-1) Changes in api/index.js 
+1) **Changes in api/index.js **
 - "require" is not directly supported on latest expressJs. So to use "require" function
  ```javascript
 import { createRequire } from 'module';
