@@ -90,8 +90,28 @@ git push heroku master
 ```
 ** Congratulations Your App is now deployed (without a Database)
 
-1) **Changes in api/index.js **
-- "require" is not directly supported on latest expressJs. So to use "require" function
+3) **Setup ClearDB (MySQL addon)**
+```
+heroku addons:create cleardb:ignite
+```
+- Configure Connection
+```heroku
+heroku config | grep CLEARDB_DATABASE_URL
+```
+Output : ```CLEARDB_DATABASE_URL: mysql://b7e2437887xxxa:0200xxx6@us-cdbr-iron-east-02.cleardb.net/heroku_7643ec736354xxx?reconnect=true```
+- Copy the value of the CLEARDB_DATABASE_URL config variable and use it in the following command:
+```heroku
+heroku config:set DATABASE_URL='mysql://b7e2437887xxxa:0200xxx6@us-cdbr-iron-east-02.cleardb.net/heroku_7643ec736354xxx?reconnect=true'
+```
+- Configure (expressjs) Node.js to connect ClearDB MySQL on Heroku
+go to api.db.js and update
+```
+export const db = mysql.createPool('mysql://b7e2437887xxxa:0200xxx6@us-cdbr-iron-east-02.cleardb.net/heroku_7643ec736354xxx?reconnect=true')
+```
+DATABASE CONNECTED???!?
+
+4) **Changes in api/index.js **
+- "require" is not directly supported on latest expressJs. So to use "require" function, Add this code
  ```javascript
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -111,9 +131,12 @@ app.listen(PORT, () => {
 });
 ```
 
-2) Changes in api/db.js
--
-
-
+5) **ENJOY**
+- commit all of these updates
+```
+git add .
+git commit -m "last-commit"
+git push heroku master
+```
 
 
