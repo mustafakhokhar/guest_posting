@@ -1,6 +1,6 @@
 Guest Posting Site - Reactjs Expressjz SAAS MySql
 
-Live Preview: 
+Live Preview: https://fsociety.herokuapp.com
 
 Technologies used:
 - Reactjs
@@ -46,3 +46,18 @@ This will Start Backend Server
 This will launch the web application
 
 The page will reload when you make changes.
+
+Deployment:
+* Web app works on local host, it will not work if directly deployed on heroku. Few chnages are needed for deployment.
+
+- Changes in api/index.js
+  - "require" is not directly supported on latest expressJs. So to use "require" function
+  ```
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const path = require('path');
+```
+
+
+
+
