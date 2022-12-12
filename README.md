@@ -52,11 +52,29 @@ Deployment:
 
 1) Changes in api/index.js 
 - "require" is not directly supported on latest expressJs. So to use "require" function
- ```
+ ```javascript
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const path = require('path');
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.use(express.static(path.join(__dirname + "/public")));
+const PORT = process.env.PORT || 8800;
 ```
+- lastly update
+```javascript
+app.listen(8800, () => {
+  console.log("Connected!");
+});
+```
+To
+```javascript
+app.listen(PORT, () => {
+  console.log("Connected!");
+});
 
 
 
