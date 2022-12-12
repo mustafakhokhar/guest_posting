@@ -77,7 +77,7 @@ const Users = () => {
                             <strong className="userN">Username: {result.username}</strong> <br/> 
                             <p className="userD"><strong> Fullname: </strong>{result.full_name}</p> <br/> 
                             <p className="userD"><strong> Status: </strong>{result.status}</p> <br/> 
-                            <p className="userD"><strong> Number of reports: </strong>{result.total_reports}</p> <br/> 
+                            <p className="userD"><strong> Number of reports: </strong>{result.reportCount}</p> <br/> 
                             <button className="banUserBut" onClick={event =>handleClick(event, key, search_array)}> <strong>Double Tap = Ban</strong></button>
                         </div>
                         <br/>
