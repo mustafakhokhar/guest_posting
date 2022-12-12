@@ -51,7 +51,7 @@ The page will reload when you make changes.
 Used: Heroku with ClearDB addon.
 * Web app works on local host, it will not work if directly deployed on heroku. Few chnages are needed for deployment.
 
-1) **Changes in Client Side:**
+### 1) Changes in Client Side:
 - In client/package.json
   - Remove very last line ```"proxy": "http://localhost:8800/api/"```
 - Create New file in client/src/config.js
