@@ -1,4 +1,4 @@
-# Guest Posting Site - Reactjs Expressjz SAAS MySql
+# Guest Posting Site: F-Society - ReactJs NodeJs SAAS MySql
 
 ###### Live Preview: https://fsociety.herokuapp.com
 
@@ -100,6 +100,11 @@ heroku config | grep CLEARDB_DATABASE_URL
 ```
 Output : ```CLEARDB_DATABASE_URL: mysql://b7e2437887xxxa:0200xxx6@us-cdbr-iron-east-02.cleardb.net/heroku_7643ec736354xxx?reconnect=true```
 - Copy the value of the CLEARDB_DATABASE_URL config variable and use it in the following command:
+- URL contains:
+  - b7e2437887xxxa: username
+  - 0200xxx6: password
+  - us-cdbr-iron-east-02.cleardb.net: host
+  - heroku_7643ec736354xxx: database
 ```heroku
 heroku config:set DATABASE_URL='mysql://b7e2437887xxxa:0200xxx6@us-cdbr-iron-east-02.cleardb.net/heroku_7643ec736354xxx?reconnect=true'
 ```
@@ -138,5 +143,12 @@ git add .
 git commit -m "last-commit"
 git push heroku master
 ```
+
+6) **Create MySQL table on ClearDB**
+- Before testing our app on Heroku, we need to create MySQL table named customers on ClearDB.
+```
+mysql --host=us-cdbr-iron-east-02.cleardb.net --user=b7e2437887xxxa --password=0200xxx6 --reconnect heroku_7643ec736354xxx
+```
+This will open mysql terminal. Create the table with SQL script in the mysql terminal.
 
 
